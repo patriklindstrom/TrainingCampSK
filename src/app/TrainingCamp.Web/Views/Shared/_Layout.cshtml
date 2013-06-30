@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - Shorinji Kempo Int Training Camp 2014</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="author" content="Patrik Lindstrom www.lcube.se">
+        <meta name="description" content="Website to promote Shorinji Kempo International Training Camp 2014 in Stockholm">
+<!-- Mobile Specific Metas
+  ================================================== -->
+        <meta name="viewport" content="width=device-width" />
+        <!-- CSS
+            ================================================== -->
+        <!-- web font  link -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,800' rel='stylesheet' type='text/css'>
+<!-- Specific -->
+@Styles.Render("~/Content/css")
+<!-- General superweb external libs -->
+        @Styles.Render("~/extlibs/superweb/css")
+
+<!--Javascript to fix old browsers css shortcomings -->
+        @Scripts.Render("~/bundles/modernizr")
+<!-- Favicons
+  ================================================== -->
+<link rel="shortcut icon" href="~/images/favicon.ico">
+<link rel="apple-touch-icon" href="~/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="~/images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="~/images/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="144x144" href="~/images/apple-touch-icon-144x144.png">
+    </head>
+    <body>
+
+        @RenderBody()
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/extlibs/superweb/js")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingCamp.Web", "src\app\TrainingCamp.Web\TrainingCamp.Web.csproj", "{13E90906-C5EC-4C2F-81AF-12C33D28B965}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingCamp.Tests", "src\test\TrainingCamp.Tests\TrainingCamp.Tests.csproj", "{8F8DD74B-0F77-4BF5-A216-94C6CFBAEDD7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13E90906-C5EC-4C2F-81AF-12C33D28B965}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13E90906-C5EC-4C2F-81AF-12C33D28B965}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13E90906-C5EC-4C2F-81AF-12C33D28B965}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13E90906-C5EC-4C2F-81AF-12C33D28B965}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F8DD74B-0F77-4BF5-A216-94C6CFBAEDD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F8DD74B-0F77-4BF5-A216-94C6CFBAEDD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F8DD74B-0F77-4BF5-A216-94C6CFBAEDD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F8DD74B-0F77-4BF5-A216-94C6CFBAEDD7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
