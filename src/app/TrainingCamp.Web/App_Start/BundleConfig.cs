@@ -46,16 +46,23 @@ namespace TrainingCamp.Web
                 "~/extlibs/bootstrap/css/bootstrap.css",
 // plugin css
                 "~/extlibs/js-plugin/pretty-photo/css/prettyPhoto.css",
-                "~/extlibs/js-plugin/pretty-photo/css/jquery.onebyone.css",
-                "~/extlibs/js-plugin/pretty-photo/css/animate.css",
+                "~/extlibs/js-plugin/one_by_one/css/jquery.onebyone.css",
+                "~/extlibs/js-plugin/one_by_one/css/animate.css",
 // icon fonts
                 "~/extlibs/font-icons/custom-icons/css/custom-icons.css"
             ))
             ;
             bundles.Add(new ScriptBundle("~/extlibs/superweb/js").Include(
-                "~/bootstrap/js/bootstrap.js",
-                "~/bootstrap/js/bootstrap-carousel-ie.js",
-                "~/Scripts/custom.js"
+            "~/extlibs/js-plugin/respond/respond.min.js",
+            "~/extlibs/js-plugin/jquery-ui/jquery-ui-1.8.23.custom.min.js",
+                "~/extlibs/bootstrap/js/bootstrap.js",
+                "~/extlibs/js-plugin/waypoint/waypoints.min.js",
+                "~/extlibs/js-plugin/waypoint/sticky/waypoints-sticky.min.js",
+                // One by one Slider  
+                "~/extlibs/js-plugin/one_by_one/jquery.onebyone.min.js",
+                "~/extlibs/js-plugin/one_by_one/jquery.touchwipe.min.js",
+                //Custom
+               "~/Scripts/custom.js"
                             )
                 );
         }

@@ -35,48 +35,107 @@
         <div class="container">
             <div class="row">
                 <div class="span12">
-                    <p class="pull-right"><span class="contactMail"><i class="icon-mail"></i><a href="#">contact@skintc2014.com</a></span><span class="contactPhone"><i class="icon-mobile"></i>+46 070 555 444</span></p>
+                    <p class="pull-right"><span class="contactMail"><i class="icon-mail"></i><a href="#">contact@skintc2014.com</a></span><span class="contactPhone"><i class="icon-mobile"></i>+46 70 555 666 444</span></p>
                 </div>
             </div>
         </div>
     </section>
-    <!-- header -->
-    <header id="mainHeader" class="clearfix">
-        <div class="row">
-            <div class="span4 clearfix"><a href="~/Views/Home/index.html" class="brand pull-left">
-                <img src="~/images/main-logo.png" alt="Superweb website template" /></a> </div>
-            <div class="span8 clearfix">
-                <!-- menu -->
-                <nav id="mainMenu" class="clearfix pull-right">
-                    <ul class="clearfix">
-                        <li><a href="~/Home" class="firstLevel active">Home</a>
-                        </li>
-                        <li><a href="~/camp" class="firstLevel">Camp</a>
-                        </li>
-                        <li><a href="~/family" class="firstLevel">Family</a>
-                        </li>
-                        <li class=""><a href="~/travel" class="firstLevel">Travel</a>
-                        </li>
-                        <li class=""><a href="~/embu" class="firstLevel">Embu</a>
-                        </li>
-                        <li><a href="~/blog-home" class="firstLevel">Blog</a>
-                        </li>
-                        <li><a href="~/project" class="firstLevel">Project</a>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- menu -->
-            </div>
-        </div>
-    </header>
-    <!-- header -->
     <!-- globalWrapper -->
     <div id="globalWrapper" class="home container">
+        <!-- header -->
+        <header id="mainHeader" class="clearfix">
+            <div class="row">
+                <div class="span4 clearfix">
+                    <a href="~/Home/index" class="brand pull-left">
+                        <img src="~/images/main-logo.png" alt="Superweb website template" /></a>
+                </div>
+                <div class="span8 clearfix">
+                    <!-- menu -->
+                    <nav id="mainMenu" class="clearfix pull-right">
+                        <ul class="clearfix">
+                            <li><a href="~/Home" class="firstLevel active">Home</a>
+                            </li>
+                            <li><a href="~/Camp" class="firstLevel">Camp</a>
+                            </li>
+                            <li><a href="~/Family" class="firstLevel">Family</a>
+                            </li>
+                            <li class=""><a href="~/Travel" class="firstLevel">Travel</a>
+                            </li>
+                            <li class=""><a href="~/Embu" class="firstLevel">Embu</a>
+                            </li>
+                            <li><a href="~/Blog-home" class="firstLevel">Blog</a>
+                            </li>
+                            <li><a href="~/Project" class="firstLevel">Project</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- menu -->
+                </div>
+            </div>
+        </header>
+        <!-- header -->
+
 
         @RenderBody()
     </div>
-    <!-- globalWrapper -->
+    <!-- end globalWrapper -->
+
+    <!-- footer -->
+    <footer class="">
+        <section id="mainFooter">
+            <div class="container">
+                <div class="row">
+                    <div class="span4">
+                        <img src="~/images/main-logo.png" alt="">
+                        <ul class="socialList">
+                            <li><a href="#" class="cicon cicon-rounded cicon-medium tips" title="Rss"><i class="icon-rss"></i></a></li>
+                            <li><a href="#" class="cicon cicon-rounded cicon-medium tips" title="Facebook"><i class="icon-facebook"></i></a></li>
+                            <li class="last"><a href="#" class="cicon cicon-rounded cicon-medium tips" title="Twitter"><i class="icon-twitter"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="span4 newsWidget">
+                        <h3><span>Latest News</span></h3>
+                        <div id="twitterFrame">
+
+                            <a class="twitter-timeline" href="https://twitter.com/search?q=%23Shorinji+Kempo" data-widget-id="351696500734164992">Tweets om "#Shorinji Kempo"</a>
+                            <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+
+                        </div>
+                    </div>
+                    <div class="span4 contactWidget">
+                        <h3><span>Contact us</span></h3>
+                        <address>
+                            <strong>Shorinji Kempo International Training Camp Stockholm 2014</strong>
+                            <p>
+                                <i class="icon-location"></i>&nbsp;Shoriji Kempo Stockholm S&ouml;dra<br>
+                                &Ouml;stg&ouml;tagatan 25, Stockholm Sweden USA
+                                    <br>
+                                <i class="icon-phone"></i>&nbsp;+46 70 666 555 444
+                                    <br>
+                                <i class="icon-mail-alt"></i>&nbsp;<a href="mailto:info@skintc2014.com">info@skintc2014.com</a>
+                            </p>
+                        </address>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <section id="footerRights">
+            <div class="container">
+                <div class="row">
+                    <div class="span12">
+                        <p>Made by Shorinji Kempo Södra Stockholm Sweden.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+    <!-- end footer -->
+    <!-- End Document 
+        ================================================== -->
     @Scripts.Render("~/bundles/jquery")
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
     @Scripts.Render("~/extlibs/superweb/js")
     @RenderSection("scripts", required: false)
 </body>

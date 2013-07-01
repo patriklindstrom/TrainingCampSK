@@ -2,7 +2,7 @@
 ================================================== */
 body {
 	color:#777;
-	background: url(../images/textures/light/subtle_dots/subtle_dots.png) #eee;
+	background: url(../ExtLibs/images/textures/light/noisy_grid/noisy_grid.png) #717E88;
 }
 /* Portrait phones */
 @media (max-width: 959px) {
@@ -17,10 +17,10 @@ background:white;
 	border-bottom-color:#ececec;
 }
 .contactPhone {
-	color:#61a7d9
+	color:#136495
 }
 .contactInfos .contactMail i {
-	color:#61a7d9
+	color:#136495
 }
 #globalWrapper {
 	background-color: white;
@@ -39,7 +39,7 @@ h2 {
 	border-bottom: 1px dashed #DEDEDE;
 }
 h2 span {
-	color:#61a7d9
+	color:#136495
 }
 h3 {
 	color:#373737;
@@ -54,15 +54,15 @@ hr {
 	color:#999;
 }
 #mainMenu ul li a:hover, #mainMenu ul li.hover>a {
-	color:#06a9ef;
+	color:#003D60;
 	background-color:#F9F9F9
 }
 #mainMenu ul li a.active {
 	color:#fff;
-	background-color:#06a9ef;
+	background-color:#003D60;
 }
 #mainMenu ul ul li a:hover {
-	color:#06a9ef
+	color:#003D60
 }
 #mainMenu ul ul {
 	background-color:#F9F9F9;
@@ -78,26 +78,26 @@ a {
 	color:#333;
 }
 a:hover {
-	color:#06a9ef
+	color:#003D60
 }
 /* #Menu home
 ================================================== */
 #innerNav a {
 	color:white;
-	background-color:#61a7d9;
-	-webkit-box-shadow: 0px 3px 0px #5390B1;
-	-moz-box-shadow:    0px 3px 0px #5390B1;
-	box-shadow:         0px 3px 0px #5390B1;
+	background-color:#136495;
+	-webkit-box-shadow: 0px 3px 0px #003D60;
+	-moz-box-shadow:    0px 3px 0px #003D60;
+	box-shadow:         0px 3px 0px #003D60;
 }
 #innerNav a:hover, #innerNav a.current {
-	background-color:#06a9ef;
+	background-color:#003D60;
 	color:white!important;
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow:   none;
 }
 #innerNav a:hover:after, #innerNav a.current:after {
-	border-top-color: #06a9ef;
+	border-top-color: #003D60;
 }
 .stuck {
 	background-color:white;
@@ -131,7 +131,7 @@ a:hover {
 }
 /* #Pages
 ================================================== */
-.page-header {
+ .page-header {
 	border-bottom:1px dashed #ccc;
 }
 /* =============== HOME PAGE =================*/
@@ -154,21 +154,20 @@ a:hover {
 ================================================== */
 
 /* =============== BOOTSTRAP CUSTOMIZATION=================*/
-
 .carousel-control {
 	color:#555555;
 }
 .carousel-control:hover {
-	color:#61a7d9;
+	color:#087fb2;
 }
 .btn {
 	border:none;
-	background: #06a9ef;
+	background: #087fb2;
 	color:#FFFFFF;
 	text-shadow: none;
-	-webkit-box-shadow: 0px 2px 0px #087fb2;
-	-moz-box-shadow:    0px 2px 0px #087fb2;
-	box-shadow:         0px 2px 0px #087fb2;/*-webkit-border-radius: 0;
+	-webkit-box-shadow: 0px 2px 0px #003D60;
+	-moz-box-shadow:    0px 2px 0px #003D60;
+	box-shadow:         0px 2px 0px #003D60;/*-webkit-border-radius: 0;
 	-moz-border-radius:    0;
 	border-radius:         0;*/
 }
@@ -234,9 +233,9 @@ a:hover {
 	border-bottom-color:#ddd;
 }
 .pager li > a:hover {
-	border:1px solid #06a9ef;
+	border:1px solid #003D60;
 	border-bottom-color:1px solid #087fb2;
-	background-color:#06a9ef;
+	background-color:#003D60;
 	color:white;
 }
 .pager li a i {
@@ -255,7 +254,7 @@ a:hover {
 }
 .hero-unit.hero-color {
 	border:none;
-	background-color:#06A9EF;
+	background-color:#003D60;
 	color:white;
 }
 small {
@@ -268,7 +267,7 @@ p {
 	background:transparent;
 }
 .pagination ul > .active > a {
-	color:#06A9EF;
+	color:#003D60;
 }
 /************ accordion ************/
 a.accordion-toggle:link {
@@ -277,7 +276,7 @@ a.accordion-toggle:link {
 	color: #666666;
 }
 a.accordion-toggle:hover, .accordion-heading a.active {
-	background-color: #06A9EF;
+	background-color: #003D60;
 	color: #FFFFFF;
 }
 .accordion-inner {
@@ -290,7 +289,7 @@ a.accordion-toggle:hover, .accordion-heading a.active {
 /************ progress bar ************/
 .progress .bar {
 	background-image:none;
-	background-color:#06a9ef
+	background-color:#003D60
 }
 /************ progress bar ************/
 
@@ -308,7 +307,7 @@ a.accordion-toggle:hover, .accordion-heading a.active {
 	color:white;
 }
 #to-top {
-	background: #06a9ef;
+	background: #003D60;
 	color:#FFFFFF;
 	text-shadow: none;
 	-webkit-box-shadow: 0px 2px 0px #087fb2;
@@ -345,13 +344,13 @@ a.accordion-toggle:hover, .accordion-heading a.active {
 	border-color:#d7d7d7;
 }
 .pricingBloc.focusPlan h3 {
-	background-color:#61a7d9;
+	background-color:#136495;
 	padding:1.25em;
 }
 /******** Pres Bloc  ********/
  
 .presBloc .media-hover .mask {
-	background-color: #06a9ef;
+	background-color: #003D60;
 }
 .presBloc .media-hover .title, .presBloc .media-hover .second-title, .presBloc .media-hover .desc {
 	color:white;
@@ -387,7 +386,7 @@ footer h3 {
 	border-top:none;
 }
 #footerRights .container {
-	background-color: #61A7D9;
+	background-color: #136495;
 	border:1px solid #ccc;
 	border-top:none;
 	color:white;
@@ -406,7 +405,7 @@ footer h3 {
 	color:#fff;
 }
 .twitterSticker {
-	background-color:#61a7d9;
+	background-color:#136495;
 }
 /*** innerTweet **/
 
@@ -417,14 +416,14 @@ footer h3 {
 	color:#222;
 }
 .twitterSticker:after {
-	border-right-color: #61a7d9;
+	border-right-color: #136495;
 }
 #footerRights p {
 	color:#999
 }
 /* ================ PORTFOLIO ==================*/
 a.current {
-	color: #06a9ef;
+	color: #003D60;
 	border-color:transparent;
 	outline:none;
 	/*
@@ -454,16 +453,16 @@ ul.entry-meta li {
 	border-bottom-color:#ddd;
 }
 .blogTags li a:hover {
-	border:1px solid #06a9ef;
+	border:1px solid #003D60;
 	border-bottom-color:1px solid #087fb2;
-	background-color:#06a9ef;
+	background-color:#003D60;
 	color:white;
 }
 .blogUpdates a.pull-left {
 	border:3px solid #ddd;
 }
 .blogUpdates a.pull-left:hover {
-	border:3px solid #06a9ef;
+	border:3px solid #003D60;
 }
 input.searchInput, input.searchInput:focus {
 	-webkit-box-shadow: 0px 3px 0px #CCC;
@@ -482,7 +481,7 @@ input.searchInput, input.searchInput:focus {
 }
 /******* Flex slider ********/
 .flex-direction-nav a {
-	background-color: #BCDAED;
+	background-color: #136495;
 }
 .flex-direction-nav .flex-next {
 	background-position: 100% center;

@@ -196,7 +196,6 @@
   <ItemGroup>
     <Content Include="Content\colors.css" />
     <Content Include="Content\layout.css" />
-    <Content Include="Content\layout20130309.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -324,6 +323,19 @@
     <Content Include="ExtLibs\images\textures\light\subtle_dots\readme.txt" />
     <Content Include="ExtLibs\images\textures\light\subtle_dots\subtle_dots.png" />
     <Content Include="ExtLibs\images\textures\light\subtle_dots\subtle_dots_%402X.png" />
+    <Content Include="Images\theme-pics\big-logo.png" />
+    <Content Include="Images\theme-pics\features-colors.jpg" />
+    <Content Include="Images\theme-pics\features-slider.jpg" />
+    <Content Include="Images\theme-pics\features-widgets.jpg" />
+    <Content Include="Images\theme-pics\map-trigger.png" />
+    <Content Include="Images\theme-pics\pic-about.jpg" />
+    <Content Include="Images\theme-pics\pic-bootstrap.jpg" />
+    <Content Include="Images\theme-pics\pic-home-2.jpg" />
+    <Content Include="Images\theme-pics\pic-home-4.jpg" />
+    <Content Include="Images\theme-pics\pic-home-5.jpg" />
+    <Content Include="Images\theme-pics\pic-home.jpg" />
+    <Content Include="Images\theme-pics\slider-title.png" />
+    <Content Include="Images\theme-pics\themes-mac.png" />
     <Content Include="Images\apple-touch-icon-114x114.png" />
     <Content Include="Images\apple-touch-icon-144x144.png" />
     <Content Include="Images\apple-touch-icon-57x57.png" />
