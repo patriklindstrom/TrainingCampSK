@@ -961,14 +961,15 @@ function initialize( id ) {
 
     var geocoder;
     var map ;
-    var myLatlng; 
-    var address = '4 Pennsylvania Plaza, New York, NY';
-    var PlaceName = 'Madison Square Garden';
+    var myLatlng;
+    /* LAT: 59,3813 LONG: 18,1833 */
+    var address = 'Bosön, Lidingö, Stockholms län, Sverige';
+    var PlaceName = 'Welcome to Bosön - the heart of Swedish sports training and education';
     var myOptions = {
         zoom: parseInt(14),
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         scrollwheel: false
-    }
+    };
     
     id = (id == undefined) ? 'mapWrapper' : id;
     

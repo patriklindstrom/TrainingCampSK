@@ -1,39 +1,83 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>@ViewBag.Title - Shorinji Kempo Int Training Camp 2014</title>
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <meta name="author" content="Patrik Lindstrom www.lcube.se">
-        <meta name="description" content="Website to promote Shorinji Kempo International Training Camp 2014 in Stockholm">
-<!-- Mobile Specific Metas
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - Shorinji Kempo Int Training Camp 2014</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="author" content="Patrik Lindstrom www.lcube.se">
+    <meta name="description" content="Website to promote Shorinji Kempo International Training Camp 2014 in Stockholm">
+    <!-- Mobile Specific Metas
   ================================================== -->
-        <meta name="viewport" content="width=device-width" />
-        <!-- CSS
+    <meta name="viewport" content="width=device-width" />
+    <!-- CSS
             ================================================== -->
-        <!-- web font  link -->
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,800' rel='stylesheet' type='text/css'>
-<!-- Specific -->
-@Styles.Render("~/Content/css")
-<!-- General superweb external libs -->
-        @Styles.Render("~/extlibs/superweb/css")
+    <!-- web font  link -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,800' rel='stylesheet' type='text/css'>
+    <!-- Specific -->
+    @Styles.Render("~/Content/css")
+    <!-- General superweb external libs -->
+    @Styles.Render("~/extlibs/superweb/css")
 
-<!--Javascript to fix old browsers css shortcomings -->
-        @Scripts.Render("~/bundles/modernizr")
-<!-- Favicons
+    <!--Javascript to fix old browsers css shortcomings -->
+    @Scripts.Render("~/bundles/modernizr")
+    <!-- Favicons
   ================================================== -->
-<link rel="shortcut icon" href="~/images/favicon.ico">
-<link rel="apple-touch-icon" href="~/images/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="72x72" href="~/images/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="114x114" href="~/images/apple-touch-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="144x144" href="~/images/apple-touch-icon-144x144.png">
-    </head>
-    <body>
+    <link rel="shortcut icon" href="~/images/favicon.ico">
+    <link rel="apple-touch-icon" href="~/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="~/images/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="~/images/apple-touch-icon-144x144.png">
+</head>
+<body onload="initialize('mapWrapper')">
+    <!-- Primary Page Layout 
+  ================================================== -->
+    <section class="contactInfos">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <p class="pull-right"><span class="contactMail"><i class="icon-mail"></i><a href="#">contact@skintc2014.com</a></span><span class="contactPhone"><i class="icon-mobile"></i>+46 070 555 444</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- header -->
+    <header id="mainHeader" class="clearfix">
+        <div class="row">
+            <div class="span4 clearfix"><a href="~/Views/Home/index.html" class="brand pull-left">
+                <img src="~/images/main-logo.png" alt="Superweb website template" /></a> </div>
+            <div class="span8 clearfix">
+                <!-- menu -->
+                <nav id="mainMenu" class="clearfix pull-right">
+                    <ul class="clearfix">
+                        <li><a href="~/Home" class="firstLevel active">Home</a>
+                        </li>
+                        <li><a href="~/camp" class="firstLevel">Camp</a>
+                        </li>
+                        <li><a href="~/family" class="firstLevel">Family</a>
+                        </li>
+                        <li class=""><a href="~/travel" class="firstLevel">Travel</a>
+                        </li>
+                        <li class=""><a href="~/embu" class="firstLevel">Embu</a>
+                        </li>
+                        <li><a href="~/blog-home" class="firstLevel">Blog</a>
+                        </li>
+                        <li><a href="~/project" class="firstLevel">Project</a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- menu -->
+            </div>
+        </div>
+    </header>
+    <!-- header -->
+    <!-- globalWrapper -->
+    <div id="globalWrapper" class="home container">
 
         @RenderBody()
-
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/extlibs/superweb/js")
-        @RenderSection("scripts", required: false)
-    </body>
+    </div>
+    <!-- globalWrapper -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/extlibs/superweb/js")
+    @RenderSection("scripts", required: false)
+</body>
 </html>
