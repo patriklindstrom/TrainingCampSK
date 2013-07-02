@@ -323,6 +323,7 @@
     <Content Include="ExtLibs\images\textures\light\subtle_dots\readme.txt" />
     <Content Include="ExtLibs\images\textures\light\subtle_dots\subtle_dots.png" />
     <Content Include="ExtLibs\images\textures\light\subtle_dots\subtle_dots_%402X.png" />
+    <Content Include="ExtLibs\js-plugin\jquery-ui\jquery-ui-1.8.23.custom.js" />
     <Content Include="Images\theme-pics\big-logo.png" />
     <Content Include="Images\theme-pics\features-colors.jpg" />
     <Content Include="Images\theme-pics\features-slider.jpg" />

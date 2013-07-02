@@ -8,16 +8,18 @@
     <meta name="description" content="Website to promote Shorinji Kempo International Training Camp 2014 in Stockholm">
     <!-- Mobile Specific Metas
   ================================================== -->
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- CSS
             ================================================== -->
     <!-- web font  link -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,800' rel='stylesheet' type='text/css'>
-    <!-- Specific -->
-    @Styles.Render("~/Content/css")
+
+   
     <!-- General superweb external libs -->
     @Styles.Render("~/extlibs/superweb/css")
-
+        <!-- Specific -->
+    @Styles.Render("~/Content/css")
+     <link type="text/css" id="colors" rel="stylesheet" href="~/Content/colors.css">
     <!--Javascript to fix old browsers css shortcomings -->
     @Scripts.Render("~/bundles/modernizr")
     <!-- Favicons
@@ -86,7 +88,7 @@
             <div class="container">
                 <div class="row">
                     <div class="span4">
-                        <img src="~/images/main-logo.png" alt="">
+                        <img src="~/images/main-logoSK2.png" alt="">
                         <ul class="socialList">
                             <li><a href="#" class="cicon cicon-rounded cicon-medium tips" title="Rss"><i class="icon-rss"></i></a></li>
                             <li><a href="#" class="cicon cicon-rounded cicon-medium tips" title="Facebook"><i class="icon-facebook"></i></a></li>
