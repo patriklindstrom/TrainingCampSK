@@ -185,7 +185,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CampController.cs" />
+    <Compile Include="Controllers\FamilyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TravelController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -324,6 +327,27 @@
     <Content Include="ExtLibs\images\textures\light\subtle_dots\subtle_dots.png" />
     <Content Include="ExtLibs\images\textures\light\subtle_dots\subtle_dots_%402X.png" />
     <Content Include="ExtLibs\js-plugin\jquery-ui\jquery-ui-1.8.23.custom.js" />
+    <Content Include="Images\portfolio\project0.jpg" />
+    <Content Include="Images\portfolio\project1.jpg" />
+    <Content Include="Images\portfolio\project2.jpg" />
+    <Content Include="Images\portfolio\vign1-big.jpg" />
+    <Content Include="Images\portfolio\vign1.jpg" />
+    <Content Include="Images\portfolio\vign2-big.jpg" />
+    <Content Include="Images\portfolio\vign2.jpg" />
+    <Content Include="Images\portfolio\vign3-big.jpg" />
+    <Content Include="Images\portfolio\vign3.jpg" />
+    <Content Include="Images\portfolio\vign4-big.jpg" />
+    <Content Include="Images\portfolio\vign4.jpg" />
+    <Content Include="Images\portfolio\vign5.jpg" />
+    <Content Include="Images\portfolio\vign6-big.jpg" />
+    <Content Include="Images\portfolio\vign6.jpg" />
+    <Content Include="Images\portfolio\vign7-big.jpg" />
+    <Content Include="Images\portfolio\vign7.jpg" />
+    <Content Include="Images\portfolio\vign8-big.jpg" />
+    <Content Include="Images\portfolio\vign8.jpg" />
+    <Content Include="Images\portfolio\vign9-big.jpg" />
+    <Content Include="Images\portfolio\vign9.jpg" />
+    <Content Include="Images\sliders\boson-air.jpg" />
     <Content Include="Images\theme-pics\big-logo.png" />
     <Content Include="Images\theme-pics\features-colors.jpg" />
     <Content Include="Images\theme-pics\features-slider.jpg" />
@@ -625,6 +649,9 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Camp\Index.cshtml" />
+    <Content Include="Views\Family\Index.cshtml" />
+    <Content Include="Views\Travel\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
