@@ -637,7 +637,7 @@ jQuery(function() {
         $('#comments').prop('minlength', 10);*/
 
         // show a simple loading indicator
-        var loader = jQuery('<div id="loader"><img src="images/loading.gif" alt="loading..." /></div>')
+        var loader = jQuery('<div id="loader"><img src="~/images/loading.gif" alt="loading..." /></div>')
         .css({
           position: "relative", 
           top: "1em", 

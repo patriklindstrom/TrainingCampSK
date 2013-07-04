@@ -327,6 +327,7 @@
     <Content Include="ExtLibs\images\textures\light\subtle_dots\subtle_dots.png" />
     <Content Include="ExtLibs\images\textures\light\subtle_dots\subtle_dots_%402X.png" />
     <Content Include="ExtLibs\js-plugin\jquery-ui\jquery-ui-1.8.23.custom.js" />
+    <Content Include="Images\loading.gif" />
     <Content Include="Images\portfolio\project0.jpg" />
     <Content Include="Images\portfolio\project1.jpg" />
     <Content Include="Images\portfolio\project2.jpg" />
