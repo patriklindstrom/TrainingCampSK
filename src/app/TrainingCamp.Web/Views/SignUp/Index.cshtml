@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+ <!-- content -->
+  <section class="content">
+    <header class="page-header">
+      <h1>Sign up</h1>
+    </header>
+    <section class="container clearfix slideContactpage">
+      <div class="row">
+        <div id="contactinfoWrapperPage" class="clearfix">
+          <div class="span3">
+            <p>Curabitur turpis orci, gravida non ornare id, venenatis nec enim. Praesent posuere condimentum leo eget volutpat. Maecenas in ligula in lacus aliquam ultricies scelerisque vitae nisl. Pellentesque quam dui, cursus in mollis sed, pretium quis dui. Proin ac nibh et leo malesuada congue.</p>
+          </div>
+          <!-- contact form -->
+          <div class="span6">
+            <form method="post" action="js-plugin/neko-contact-ajax-plugin/php/form-handler.php" id="contactfrm">
+              <label for="name"></label>
+              <input type="text" name="name" id="name" placeholder="Name"  title="Please enter your name (at least 2 characters)"/>
+              <label for="email"></label>
+              <input type="text" name="email" id="email" placeholder="Email" title="Please enter a valid email address"/>
+              <label for="phone"></label>
+              <input name="phone" type="text" id="phone" size="30" value="" placeholder="Phone" class="required digits" title="Please enter a valid phone number (at least 10 characters)">
+              <label for="comments"></label>
+              <textarea name="comment" id="comments" cols="3" rows="5" placeholder="Enter your message…" title="Please enter your message (at least 10 characters)"></textarea>
+              <fieldset class="clearfix securityCheck">
+              <legend>Security</legend>
+              <div class="row">
+                <div class="span6 pull-left humanCheck">
+                  <label for="verify" class="pull-left"><img src="js-plugin/neko-contact-ajax-plugin/php/image.php" alt="Image verification"/></label>
+                  <input class="required "  id="verify" name="verify" type="text" >
+                </div>
+              </div>
+              </fieldset>
+              <br/>
+              <button name="submit" type="submit" class="btn" id="submit"> Submit</button>
+            </form>
+            <div class="result"></div>
+            <div id="message"></div>
+          </div>
+          <!-- contact form -->
+          <div class="span3">
+            <address>
+            <span>Address:</span> Himalaya Company<br/>
+            77 Mass. Ave., E14/E15<br/>
+            Cambridge, MA 02139-4307 USA <br/>
+            <br/>
+            <span>Phone:</span> 615.987.1234<br/>
+            </address>
+            <h3><span>MAP</span></h3>
+            <a href="" title="locate us" id="mapTriggerLoader"><img src="~/images/theme-pics/map-trigger.png" alt="locate us"/></a> </div>
+        </div>
+        <div class="span12"  id="mapSlideWrapper">
+          <div id="mapWrapper"></div>
+          <a href="" title="" id="mapReturn"><i class="icon iconReturn"></i> back</a> </div>
+      </div>
+    </section>
+  </section>

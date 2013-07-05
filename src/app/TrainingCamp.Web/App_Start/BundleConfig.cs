@@ -22,6 +22,7 @@ namespace TrainingCamp.Web
                 "~/Extlibs/js-plugin/one_by_one/css/jquery.onebyone.css",
                 "~/Extlibs/js-plugin/one_by_one/css/animate.css",
                 "~/Extlibs/js-plugin/neko-contact-ajax-plugin/css/cmxformTemplate.css",
+                "~/Extlibs/js-plugin/isotope/css/style.css",
                 // icon fonts
                 "~/Extlibs/font-icons/custom-icons/css/custom-icons.css"));
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
@@ -45,6 +46,7 @@ namespace TrainingCamp.Web
                 // One by one Slider  
                 "~/Extlibs/js-plugin/one_by_one/jquery.onebyone.js",
                 "~/Extlibs/js-plugin/one_by_one/jquery.touchwipe.js",
+                "~/Extlibs/js-plugin/isotope/jquery.isotope.js",
                 //Custom
                 "~/Scripts/custom.js"
                             )
