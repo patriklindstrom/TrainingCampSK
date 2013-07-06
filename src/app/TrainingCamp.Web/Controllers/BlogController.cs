@@ -16,5 +16,9 @@ namespace TrainingCamp.Web.Controllers
             return View();
         }
 
+        public ActionResult post(string blogkey)
+        {
+            return View();
+        }
     }
 }
