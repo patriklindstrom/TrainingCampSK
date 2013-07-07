@@ -565,7 +565,6 @@
     <Content Include="ExtLibs\js-plugin\one_by_one\images\assets\.DS_Store" />
     <Content Include="ExtLibs\js-plugin\pretty-photo\images\.DS_Store" />
     <Content Include="ExtLibs\js-plugin\pretty-photo\images\fullscreen\.DS_Store" />
-    <Content Include="ExtLibs\images\textures\dark\black_lozenge\.DS_Store" />
     <Content Include="ExtLibs\images\textures\light\az_subtle\.DS_Store" />
     <Content Include="ExtLibs\images\textures\light\ecailles\.DS_Store" />
     <Content Include="ExtLibs\images\textures\light\grey\.DS_Store" />
