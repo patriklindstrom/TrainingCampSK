@@ -555,16 +555,7 @@
     <Content Include="Global.asax" />
     <Content Include="ExtLibs\js-plugin\jquery.sharrre-1.3.4\README.md" />
     <Content Include="ExtLibs\js-plugin\neko-contact-ajax-plugin\arial.ttf" />
-    <Content Include="ExtLibs\js-plugin\nivo\.DS_Store" />
-    <Content Include="ExtLibs\js-plugin\nivo\demo\.DS_Store" />
-    <Content Include="ExtLibs\js-plugin\nivo\demo\images\.DS_Store" />
-    <Content Include="ExtLibs\js-plugin\nivo\demo\scripts\.DS_Store" />
     <Content Include="ExtLibs\js-plugin\nivo\README" />
-    <Content Include="ExtLibs\js-plugin\nivo\themes\.DS_Store" />
-    <Content Include="ExtLibs\js-plugin\nivo\themes\dark\.DS_Store" />
-    <Content Include="ExtLibs\js-plugin\one_by_one\images\assets\.DS_Store" />
-    <Content Include="ExtLibs\js-plugin\pretty-photo\images\.DS_Store" />
-    <Content Include="ExtLibs\js-plugin\pretty-photo\images\fullscreen\.DS_Store" />
     <Content Include="ExtLibs\font-icons\custom-icons\config.json" />
     <Content Include="ExtLibs\font-icons\custom-icons\font\custom-icons.eot" />
     <Content Include="ExtLibs\font-icons\custom-icons\font\custom-icons.ttf" />
