@@ -50,7 +50,9 @@ namespace TrainingCamp.Web
                 //Custom
                 "~/Scripts/custom.js"
                             )
+
                 );
+            BundleTable.EnableOptimizations = false;
         }
     }
 }
