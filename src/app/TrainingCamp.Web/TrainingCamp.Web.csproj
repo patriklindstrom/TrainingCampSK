@@ -191,6 +191,7 @@
     <Compile Include="Controllers\FamilyController.cs" />
     <Compile Include="Controllers\FAQController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\SignUpController.cs" />
     <Compile Include="Controllers\TravelController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -666,6 +667,7 @@
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\SignUp\Index.cshtml" />
     <Content Include="Views\Blog\post.cshtml" />
+    <Content Include="Views\Project\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
