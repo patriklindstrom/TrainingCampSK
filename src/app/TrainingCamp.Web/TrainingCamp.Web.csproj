@@ -565,13 +565,6 @@
     <Content Include="ExtLibs\js-plugin\one_by_one\images\assets\.DS_Store" />
     <Content Include="ExtLibs\js-plugin\pretty-photo\images\.DS_Store" />
     <Content Include="ExtLibs\js-plugin\pretty-photo\images\fullscreen\.DS_Store" />
-    <Content Include="ExtLibs\images\textures\light\az_subtle\.DS_Store" />
-    <Content Include="ExtLibs\images\textures\light\ecailles\.DS_Store" />
-    <Content Include="ExtLibs\images\textures\light\grey\.DS_Store" />
-    <Content Include="ExtLibs\images\textures\light\linedpaper\.DS_Store" />
-    <Content Include="ExtLibs\images\textures\light\noisy_grid\.DS_Store" />
-    <Content Include="ExtLibs\images\textures\light\pw_maze_white\.DS_Store" />
-    <Content Include="ExtLibs\images\textures\light\shl\.DS_Store" />
     <Content Include="ExtLibs\font-icons\custom-icons\config.json" />
     <Content Include="ExtLibs\font-icons\custom-icons\font\custom-icons.eot" />
     <Content Include="ExtLibs\font-icons\custom-icons\font\custom-icons.ttf" />
