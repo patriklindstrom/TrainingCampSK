@@ -336,6 +336,14 @@
     <Content Include="Images\blog\blog-pic2.jpg" />
     <Content Include="Images\blog\blog-pic3.jpg" />
     <Content Include="Images\blog\Start-up-meeting.jpg" />
+    <Content Include="Images\Embu\Alex_Anders_Viktor.png" />
+    <Content Include="Images\Embu\em_guld.png" />
+    <Content Include="Images\Embu\Patrik_Olle.png" />
+    <Content Include="Images\Embu\Pontus_kenneth.png" />
+    <Content Include="Images\Embu\p_e.png" />
+    <Content Include="Images\Embu\shorinji-em-hanna-lotta.png" />
+    <Content Include="Images\Embu\SM-Shorinji-2011-Alex_Pontus.png" />
+    <Content Include="Images\Embu\SM-Shorinji-Pontus_Alex_ichi-gamae.png" />
     <Content Include="Images\loading.gif" />
     <Content Include="Images\portfolio\project0.jpg" />
     <Content Include="Images\portfolio\project1.jpg" />
