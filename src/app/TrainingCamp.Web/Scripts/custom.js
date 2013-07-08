@@ -963,8 +963,8 @@ function initialize( id ) {
     var map ;
     var myLatlng;
     /* LAT: 59,3813 LONG: 18,1833 */
-    var address = 'Bosön, Lidingö, Stockholms län, Sverige';
-    var PlaceName = 'Welcome to Bosön - the heart of Swedish sports training and education';
+    var address = 'Bos&ouml;n, Liding&ouml;, Stockholms l&auml;n, Sverige';
+    var PlaceName = 'Welcome to Bos&ouml;n - the heart of Swedish sports training and education';
     var myOptions = {
         zoom: parseInt(14),
         mapTypeId: google.maps.MapTypeId.ROADMAP,
