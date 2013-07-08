@@ -108,7 +108,7 @@
             <div class="container">
                 <div class="row">
                     <div class="span4">
-                        <img src="~/"~/images/main-logoSK2.png" alt="">
+                        <img src="~/images/main-logoSK2.png" alt="">
                         <ul class="socialList">
                             <li><a href="#" class="cicon cicon-rounded cicon-medium tips" title="Rss"><i class="icon-rss"></i></a></li>
                             <li><a href="#" class="cicon cicon-rounded cicon-medium tips" title="Facebook"><i class="icon-facebook"></i></a></li>
@@ -157,8 +157,10 @@
     <!-- End Document 
         ================================================== -->
     @Scripts.Render("~/bundles/jquery")
-    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    
     @Scripts.Render("~/extlibs/superweb/js")
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script src="~/Scripts/custom.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

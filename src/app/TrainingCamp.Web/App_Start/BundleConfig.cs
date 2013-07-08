@@ -46,9 +46,9 @@ namespace TrainingCamp.Web
                 // One by one Slider  
                 "~/Extlibs/js-plugin/one_by_one/jquery.onebyone.js",
                 "~/Extlibs/js-plugin/one_by_one/jquery.touchwipe.js",
-                "~/Extlibs/js-plugin/isotope/jquery.isotope.js",
+                "~/Extlibs/js-plugin/isotope/jquery.isotope.js"
                 //Custom
-                "~/Scripts/custom.js"
+               
                             )
 
                 );
