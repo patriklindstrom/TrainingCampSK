@@ -7,12 +7,13 @@ namespace TrainingCamp.Web.Repository
 {
     public class WebTextViewBag
     {
-        public WebTextViewBag(List<WebText> webTexts)
+        public WebTextViewBag(IEnumerable<WebText> webTexts)
         {
-            WebTexts = webTexts;
+            WebTextDictionary = webTexts.ToDictionary(k=>k.Name,t=>t.HtmlText);
         }
 
-        private List<WebText> WebTexts { get; set; }
+      //  private List<WebText> WebTexts { get; set; }
+        private Dictionary<string,string> WebTextDictionary { get; set; }
 
         public string GetWebHtmlText(string name, string defaultText)
         {
@@ -24,19 +25,27 @@ namespace TrainingCamp.Web.Repository
             {
                 throw new ArgumentNullException("defaultText", "There has to be a defaultText in the view as a backup");
             }
-            var webtText = WebTexts.FirstOrDefault(t => t.Name == name);
-            if (webtText != null)
-            {
-                var htmlText = webtText.HtmlText;
-            
-                string returnText = string.IsNullOrEmpty(htmlText) ? defaultText : htmlText;
 
+            string htmlText = null;
+            string webtText = null;
+            if (WebTextDictionary != null)
+            {
+                if (WebTextDictionary.TryGetValue(name, out webtText))
+                {
+                    htmlText = webtText;
+                }
+                string returnText = string.IsNullOrEmpty(htmlText) ? defaultText : htmlText;
                 return returnText;
             }
             else
             {
-                throw new NullReferenceException("The List of webText is null cant look up any html texts");
+                throw new NullReferenceException("The  WebTextDictionary is null cant look up any html texts");
             }
+        }
+
+        public string GetWebHtmlTextWithQuotes(string name, string defaultText)
+        {
+            return GetWebHtmlText(name, defaultText);
         }
     }
 }

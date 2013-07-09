@@ -32,11 +32,11 @@ namespace TrainingCamp.Web.Repository
             List<WebText> viewSearchReturn = null;
             switch (lang)
             {case "en" :
-                    viewSearchReturn = new List<WebText> { new WebText { WebTextId = 1, View = viewName,Lang = "en",Name = "LatestNewsHeader", HtmlText = "Latest News" } ,
+                    viewSearchReturn = new List<WebText> { new WebText { WebTextId = 1, View = viewName,Lang = "en",Name = "LatestNewsHeader", HtmlText = "Latest News " } ,
             new WebText { WebTextId = 2, View = viewName, Name = "slide2Txt2", HtmlText = "The Camp is 3 days with Embu competion" }};
                     break;
             case "sv":
-                    viewSearchReturn = new List<WebText> { new WebText { WebTextId = 3, View = viewName,Lang = "sv",Name = "LatestNewsHeader", HtmlText = "Senaste nytt" } ,
+                    viewSearchReturn = new List<WebText> { new WebText { WebTextId = 3, View = viewName,Lang = "sv",Name = "LatestNewsHeader", HtmlText = "Senaste nytt <span>Vad har hänt</span>" } ,
              new WebText { WebTextId = 4, View = viewName, Name = "slide2Txt2", HtmlText = "Lägret är på 3 dagar med Embu tävling" }};
                      break;
             case "ja":
