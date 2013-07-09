@@ -10,11 +10,23 @@ namespace TrainingCamp.Web.Controllers
     public class HomeController : Controller
     {
         //TODO fix so this is Dependency injected instead
-        public IWebTextRepo WebTextRepo = new Repository.WebTextRepo();
+        public IWebTextRepo WebTextRepo = new Repository.WebTextRepoRavenDB();
+
+       [OutputCache(Duration = 600, VaryByParam = "lang")]
         public ActionResult Index(string lang="en")
         {
+            WebTextViewBag webTextViewBag = null;
             List<WebText> webTexts = this.WebTextRepo.GetAllWebTextRepoForView("Home", lang);
-            var webTextViewBag = new WebTextViewBag(webTexts);
+           
+            if (webTexts!=null)
+            {
+                 webTextViewBag = new WebTextViewBag(webTexts); 
+            }
+            else
+            {
+                throw new NullReferenceException("Could not get webtext from WebTextRepo.GetAllWebTextRepoForView");
+            }
+            
             ViewBag.Message = "Shorjini Kempo Camp Stockholm 2014 homepage";
 
             return View(webTextViewBag);
@@ -26,6 +38,16 @@ namespace TrainingCamp.Web.Controllers
 
             return View();
         }
+
+        public ActionResult ClearCache()
+        {
+            //    defaults: new { controller = "Home", action = "Index", lang = UrlParameter.Optional }
+            var path = Url.Action("Index", "Home",new{controller="Home",action = "Index" ,lang="en"});
+            var defaultProvider = "";
+            HttpResponse.RemoveOutputCacheItem(path);
+            return RedirectToAction("Index");
+        }
+
 
         public ActionResult Contact()
         {
