@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TrainingCamp.Web.Repository;
 
 namespace TrainingCamp.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        //TODO fix so this is Dependency injected instead
+        public IWebTextRepo WebTextRepo = new Repository.WebTextRepo();
+        public ActionResult Index(string lang="en")
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+            List<WebText> webTexts = this.WebTextRepo.GetAllWebTextRepoForView("Home", lang);
+            ViewBag.Message = "Shorjini Kempo Camp Stockholm 2014 homepage";
 
-            return View();
+            return View(webTexts);
         }
 
         public ActionResult About()

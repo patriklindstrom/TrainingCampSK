@@ -200,6 +200,8 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\WebText.cs" />
+    <Compile Include="Repository\WebTextRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\colors.css" />

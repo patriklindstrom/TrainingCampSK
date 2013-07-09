@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<TrainingCamp.Web.Repository.WebText>
+@{
     ViewBag.Title = "Home Page";       
 }
   <!-- slider -->
@@ -21,7 +22,7 @@
               <h1></h1>
             </div>
             <div class="slide2Txt2" data-animate="lightSpeedIn">
-              <h2> <i class="icon-star"></i> The Camp is 3 days with Embu competion </h2>
+              <h2> <i class="icon-star"></i> @Model.FirstOrDefault(t=>t.Name=="slide2Txt2").HtmlText  yeah </h2>
             </div>
             <div class="slide2Txt3" data-animate="lightSpeedIn">
               <h2> <i class="icon-star"></i> Beautiful training camp Bosön  </h2>
@@ -57,7 +58,7 @@
 <section class="content">
     <div class="row newsRow mb40">
       <div class="span12">
-        <h2>Latest News <span>What's up doc</span></h2>
+        <h2>@Model.FirstOrDefault(t=>t.Name=="LatestNewsHeader").HtmlText  <span>What's up doc</span></h2>
       </div>
       <article>
         <div class="span4">
