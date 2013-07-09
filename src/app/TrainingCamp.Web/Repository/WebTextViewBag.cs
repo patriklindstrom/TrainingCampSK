@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace TrainingCamp.Web.Repository
 {
@@ -43,9 +44,12 @@ namespace TrainingCamp.Web.Repository
             }
         }
 
-        public string GetWebHtmlTextWithQuotes(string name, string defaultText)
+        public MvcHtmlString GetWebHtmlTextWithQuotes(string name, string defaultText)
         {
-            return GetWebHtmlText(name, defaultText);
+            //Todo check for XSS ? Html encode ? Or should that just be done when entering data.
+            var tempName = (GetWebHtmlText(name, defaultText)); ; 
+            var   tempName2 = "\"" + tempName + "\"";
+            return MvcHtmlString.Create(tempName2);
         }
     }
 }
