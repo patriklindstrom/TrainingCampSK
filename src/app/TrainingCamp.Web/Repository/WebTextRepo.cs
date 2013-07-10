@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using Raven.Client;
@@ -11,69 +12,98 @@ namespace TrainingCamp.Web.Repository
     public interface IWebTextRepo
     {
         string GetWebTextRepo(int id);
-        List<WebText> SearchWebTextRepo(string name);
-        List<WebText> GetAllWebTextRepoForView(string viewName, string lang);
+        List<WebText> SearchWebText(string name);
+        List<WebText> SearchWebText(string viewName, string lang);
+        List<WebText> SearchWebText(string viewName, string lang,string name);
+        Boolean WebTextExist(string viewName, string lang, string name);
         void AddWebText(WebText webText);
         void EditWebText(int webTextId);
     }
 
     public class WebTextRepoRavenDB : IWebTextRepo
     {
-        public IDocumentStore MyDocumentStore { get; set; }
-        public IDocumentSession Session { get; set; }
-
-        public WebTextRepoRavenDB()
+        public IDocumentStore RavenDocumentStore
         {
-            //var documentStore = new EmbeddableDocumentStore {RunInMemory = true}.Initialize() ;
-            if (MyDocumentStore == null)
+            get { return DocumentStoreHolder.DocumentStore; }
+        }
+
+        private IDocumentSession _documentSession;
+
+        private IDocumentSession RavenSession
+        {
+            get
             {
-
-                 MyDocumentStore = new DocumentStore
+                if (_documentSession == null)
                 {
-                    Url = "https://ibis.ravenhq.com/databases/LCube-TrainingCampSK",
-                    ApiKey = "2a4d9d4f-a5f6-4663-983d-3aa7cbac9bd4"
-                };
-                MyDocumentStore.Initialize();
-
-                //MyDocumentStore = new EmbeddableDocumentStore { RunInMemory = true }.Initialize();
-                //        MyEmbeddableDocumentStore =
-                //new EmbeddableDocumentStore { DataDirectory = "~/App_Data/RavenDB"}
-                //    .Initialize();
-                Session = MyDocumentStore.OpenSession();
+                    this._documentSession = RavenDocumentStore.OpenSession();
+                }
+                Debug.Assert(_documentSession != null, "_documentSession != null");
+                return this._documentSession;
             }
         }
+
 
         public string GetWebTextRepo(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<WebText> SearchWebTextRepo(string name)
+        public List<WebText> SearchWebText(string name)
         {
-            var searchReturn = new List<WebText>
-                {
-                    new WebText {WebTextId = 1, View = "Home", Name = name, HtmlText = "NotDone"}
-                };
-            return searchReturn;
+            List<WebText> viewSearchReturn = null;
+            using (RavenSession)
+            {
+                Debug.Assert(RavenSession != null, "RavenSession != null");
+                viewSearchReturn = RavenSession.Query<WebText>()
+                                               .Where(t => t.Name == name)
+                                               .ToList();
+            }
+            return viewSearchReturn;
         }
 
-        public List<WebText> GetAllWebTextRepoForView(string viewName, string lang)
+
+        public List<WebText> SearchWebText(string viewName, string lang)
         {
-          //  AddTestData(Session);
             List<WebText> viewSearchReturn = null;
-            viewSearchReturn = Session.Query<WebText>()
-                .Where(t => t.View==viewName && t.Lang==lang)
-                .ToList();
-            Session.Dispose();
-            MyDocumentStore.Dispose();
+            using (RavenSession)
+            {
+                Debug.Assert(RavenSession != null, "RavenSession != null");
+                viewSearchReturn = RavenSession.Query<WebText>()
+                                               .Where(t => t.View == viewName && t.Lang == lang)
+                                               .ToList();
+            }
             return viewSearchReturn;
+        }
+
+        public List<WebText> SearchWebText(string viewName, string lang, string name)
+        {
+            List<WebText> viewSearchReturn = null;
+            using (RavenSession)
+            {
+                Debug.Assert(RavenSession != null, "RavenSession != null");
+                viewSearchReturn = RavenSession.Query<WebText>()
+                                               .Where(t => t.View == viewName && t.Lang == lang)
+                                               .Where(t => t.Name == name)
+                                               .ToList();
+            }
+            return viewSearchReturn;
+        }
+
+        public Boolean WebTextExist(string viewName, string lang, string name)
+        {
+            return SearchWebText(viewName, lang, name).Any();
         }
 
         public void AddWebText(WebText webText)
         {
-            throw new NotImplementedException();
+            RavenSession.Store(webText);
+            RavenSession.SaveChanges();
         }
-
+        public void AddWebTextList(List<WebText> webTexts)
+        {
+            RavenSession.Store(webTexts);
+            RavenSession.SaveChanges();
+        }
         public void EditWebText(int webTextId)
         {
             throw new NotImplementedException();
@@ -81,51 +111,53 @@ namespace TrainingCamp.Web.Repository
 
         public void AddTestData(IDocumentSession session)
         {
-     
-            const string viewName = "Home";
+            const string VIEW_NAME = "Home";
+            const string TRANSLATOR = "MockFake";
             // List<WebText> webTexts = new List<WebText>();
-            session.Store(new WebText
+            session.Store(new WebText(TRANSLATOR)
                 {
-                    WebTextId = 1,
-                    View = viewName,
+                    View = VIEW_NAME,
                     Lang = "en",
                     Name = "LatestNewsHeader",
                     HtmlText = "Latest News "
                 });
-            session.Store(new WebText
+            session.Store(new WebText(TRANSLATOR)
                 {
-                    WebTextId = 2,
-                    View = viewName,
+                    View = VIEW_NAME,
                     Lang = "en",
                     Name = "slide2Txt2",
                     HtmlText = "The Camp is 3 days with Embu competion"
                 });
-            session.Store(new WebText
+            session.Store(new WebText(TRANSLATOR)
                 {
-                    WebTextId = 3,
-                    View = viewName,
+                    View = VIEW_NAME,
                     Lang = "sv",
                     Name = "LatestNewsHeader",
                     HtmlText = "Senaste nytt <span>Vad har hänt</span>"
                 });
-            session.Store(new WebText
+            session.Store(new WebText(TRANSLATOR)
                 {
-                    WebTextId = 4,
-                    View = viewName,
+                    View = VIEW_NAME,
                     Lang = "sv",
                     Name = "slide2Txt2",
                     HtmlText = "Lägret är på 3 dagar med Embu tävling"
                 });
 
-            session.Store(new WebText
+            session.Store(new WebText(TRANSLATOR)
                 {
-                    WebTextId = 5,
-                    View = viewName,
+                    View = VIEW_NAME,
                     Lang = "ja",
                     Name = "LatestNewsHeader",
                     HtmlText = "最新ニュース"
                 });
-            session.Store(new WebText { WebTextId = 6, Lang = "ja", View = viewName, Name = "slide2Txt2", HtmlText = "合宿はエンブと3日です" });
+            session.Store(new WebText(TRANSLATOR)
+                {
+                    Lang = "ja",
+                    View = VIEW_NAME,
+                    Name = "slide2Txt2",
+                    HtmlText = "合宿はエンブと3日です"
+                });
+
             session.SaveChanges();
         }
     }

@@ -7,39 +7,39 @@ using TrainingCamp.Web.Repository;
 
 namespace TrainingCamp.Tests
 {
-    class WebTextRepoMock : IWebTextRepo
+    internal class WebTextRepoMock : IWebTextRepo
     {
         public string GetWebTextRepo(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<WebText> SearchWebTextRepo(string name)
+        public List<WebText> SearchWebText(string name)
         {
             throw new NotImplementedException();
         }
 
-        public List<WebText> GetAllWebTextRepoForView(string viewName, string lang)
+        public List<WebText> SearchWebText(string viewName, string lang)
         {
+            const string TRANSLATOR = "MockFake";
             List<WebText> viewSearchReturn = null;
             switch (lang)
             {
                 case "en":
                     viewSearchReturn = new List<WebText>
                         {
-                            new WebText
+                            new WebText (TRANSLATOR)
                                 {
-                                    WebTextId = 1,
                                     View = viewName,
                                     Lang = "en",
                                     Name = "LatestNewsHeader",
                                     HtmlText = "Latest News "
                                 },
-                            new WebText
+                            new WebText  (TRANSLATOR)
                                 {
-                                    WebTextId = 2,
                                     View = viewName,
                                     Name = "slide2Txt2",
+                                     Lang = "en",
                                     HtmlText = "The Camp is 3 days with Embu competion"
                                 }
                         };
@@ -47,19 +47,18 @@ namespace TrainingCamp.Tests
                 case "sv":
                     viewSearchReturn = new List<WebText>
                         {
-                            new WebText
+                            new WebText  (TRANSLATOR)
                                 {
-                                    WebTextId = 3,
                                     View = viewName,
                                     Lang = "sv",
                                     Name = "LatestNewsHeader",
                                     HtmlText = "Senaste nytt <span>Vad har hänt</span>"
                                 },
-                            new WebText
+                            new WebText  (TRANSLATOR)
                                 {
-                                    WebTextId = 4,
                                     View = viewName,
                                     Name = "slide2Txt2",
+                                    Lang = "sv",
                                     HtmlText = "Lägret är på 3 dagar med Embu tävling"
                                 }
                         };
@@ -67,21 +66,36 @@ namespace TrainingCamp.Tests
                 case "ja":
                     viewSearchReturn = new List<WebText>
                         {
-                            new WebText
+                            new WebText  (TRANSLATOR)
                                 {
-                                    WebTextId = 5,
                                     View = viewName,
                                     Lang = "ja",
                                     Name = "LatestNewsHeader",
                                     HtmlText = "最新ニュース"
                                 },
-                            new WebText {WebTextId = 6, View = viewName, Name = "slide2Txt2", HtmlText = "合宿はエンブと3日です"}
+                            new WebText  (TRANSLATOR)
+                                {
+                                    View = viewName,
+                                    Name = "slide2Txt2",
+                                    Lang = "ja",
+                                    HtmlText = "合宿はエンブと3日です"
+                                }
                         };
                     break;
             }
 
 
             return viewSearchReturn;
+        }
+
+        public List<WebText> SearchWebText(string viewName, string lang, string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool WebTextExist(string viewName, string lang, string name)
+        {
+            throw new NotImplementedException();
         }
 
         public void AddWebText(WebText webText)

@@ -11,16 +11,17 @@ namespace TrainingCamp.Web.Controllers
     {
         //TODO fix so this is Dependency injected instead
         public IWebTextRepo WebTextRepo = new Repository.WebTextRepoRavenDB();
-
-       [OutputCache(Duration = 600, VaryByParam = "lang")]
+        
+      // [OutputCache(Duration = 600, VaryByParam = "lang")]
         public ActionResult Index(string lang="en")
         {
             WebTextViewBag webTextViewBag = null;
-            List<WebText> webTexts = this.WebTextRepo.GetAllWebTextRepoForView("Home", lang);
+            List<WebText> webTexts = this.WebTextRepo.SearchWebText("Home", lang);
+            MissingWebTextHandler missingWebTextHandler = new Repository.MissingWebTextFixer("Home", WebTextRepo);
            
             if (webTexts!=null)
             {
-                 webTextViewBag = new WebTextViewBag(webTexts); 
+                 webTextViewBag = new WebTextViewBag(webTexts,missingWebTextHandler); 
             }
             else
             {
