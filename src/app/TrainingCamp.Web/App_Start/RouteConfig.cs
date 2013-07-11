@@ -12,12 +12,19 @@ namespace TrainingCamp.Web
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.MapRoute(
+            name: "Translation",
+            url: "{controllername}/{actionname}/{langname}/translate",
+            defaults: new { controller = "Translate", action = "Index" }
+            );
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{lang}",
-                defaults: new { controller = "Home", action = "Index", lang = UrlParameter.Optional }
-            );
+                defaults: new {controller = "Home", action = "Index", lang = "en"}
+                );
+
+
         }
     }
 }
