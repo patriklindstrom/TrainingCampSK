@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TrainingCamp.Web.Models;
 using TrainingCamp.Web.Repository;
 
 namespace TrainingCamp.Web.Controllers
@@ -25,7 +26,7 @@ namespace TrainingCamp.Web.Controllers
             }
             else
             {
-                throw new NullReferenceException("Could not get webtext from WebTextRepo.GetAllWebTextRepoForView");
+                throw new NullReferenceException("Could not get webtext from WebTextRepo.SearchWebText");
             }
             
             ViewBag.Message = "Shorjini Kempo Camp Stockholm 2014 homepage";

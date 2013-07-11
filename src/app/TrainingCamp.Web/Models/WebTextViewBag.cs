@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using TrainingCamp.Web.Repository;
 
-namespace TrainingCamp.Web.Repository
+namespace TrainingCamp.Web.Models
 {
     public class WebTextViewBag
     {
