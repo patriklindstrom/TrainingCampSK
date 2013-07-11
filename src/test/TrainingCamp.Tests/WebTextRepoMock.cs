@@ -107,5 +107,10 @@ namespace TrainingCamp.Tests
         {
             throw new NotImplementedException();
         }
+
+        public List<WebTextCombined> SearchWebTextLeftJoin(string viewName, string rightLang, string leftLang)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,5 +1,20 @@
-﻿@{
-    ViewBag.Title = "You are translating";
+﻿@model TrainingCamp.Web.Models.WebTextTranslationViewModel
+@{
+    ViewBag.Title = "Translation of web text";
 }
 
-<h2>Get to work son</h2>
+
+<h2>List of text items to be translated</h2>
+
+<h3>Click on a item to edit it in the table. </h3>
+<table class="table table-striped">
+    <thead>
+        <tr><td>Id</td><td>Name</td><td>Time</td><td>Text</td><td>Comment</td><td>Translator</td></tr>
+    </thead>
+    <tbody>
+        @foreach (var trRow in @Model.TranslationTexts)
+        {
+            <tr><td>@trRow.Id</td><td>@trRow.Name</td><td>@trRow.CreationTime</td><td>@trRow.HtmlTextShort</td><td>@trRow.CommentShort</td><td>@trRow.Translator</td></tr>           
+        }
+    </tbody>
+</table>

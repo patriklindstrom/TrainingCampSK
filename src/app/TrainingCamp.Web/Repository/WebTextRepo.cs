@@ -18,6 +18,7 @@ namespace TrainingCamp.Web.Repository
         Boolean WebTextExist(string viewName, string lang, string name);
         void AddWebText(WebText webText);
         void EditWebText(int webTextId);
+        List<WebTextCombined> SearchWebTextLeftJoin(string viewName, string rightLang, string leftLang);
     }
 
     public class WebTextRepoRavenDB : IWebTextRepo
@@ -106,6 +107,12 @@ namespace TrainingCamp.Web.Repository
         }
         public void EditWebText(int webTextId)
         {
+            throw new NotImplementedException();
+        }
+
+        public List<WebTextCombined> SearchWebTextLeftJoin(string viewName, string rightLang, string leftLang)
+        {
+
             throw new NotImplementedException();
         }
 

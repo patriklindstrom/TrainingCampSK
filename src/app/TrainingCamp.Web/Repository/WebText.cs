@@ -32,4 +32,11 @@ namespace TrainingCamp.Web.Repository
         //Metadata
         public DateTime ArchiveTime { get; set; }
     }
+
+    public class WebTextCombined
+    {
+        public WebText WebTextLeft { get; set; }
+        public WebText WebTextRight { get; set; }
+
+    }
 }
