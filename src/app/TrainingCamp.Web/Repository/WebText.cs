@@ -4,8 +4,13 @@ namespace TrainingCamp.Web.Repository
 {
     public class WebText
     {
+        public WebText(string translator)
+        {
+            Translator = translator;
+            CreationTime = DateTime.UtcNow;
+        }
         //ID
-        public int WebTextId { get; set; }
+        public String Id { get; set; }
         //Keys
         public String View { get; set; }
         public String Name { get; set; }
@@ -13,5 +18,18 @@ namespace TrainingCamp.Web.Repository
         //Data
         public String HtmlText { get; set; }
         public String Comment { get; set; }
+        //Metadata
+        public DateTime CreationTime { get; set; }
+        public string Translator { get; set; }
+    }
+
+    public class WebTextArchive
+    {
+        //ID
+        public String Id { get; set; }
+        //ArchiveData
+        public WebText WebText { get; set; }
+        //Metadata
+        public DateTime ArchiveTime { get; set; }
     }
 }

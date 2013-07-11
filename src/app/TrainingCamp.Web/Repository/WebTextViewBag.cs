@@ -8,11 +8,13 @@ namespace TrainingCamp.Web.Repository
 {
     public class WebTextViewBag
     {
-        public WebTextViewBag(IEnumerable<WebText> webTexts)
+        public WebTextViewBag(IEnumerable<WebText> webTexts,MissingWebTextHandler missing)
         {
             WebTextDictionary = webTexts.ToDictionary(k=>k.Name,t=>t.HtmlText);
+            _missing = missing;
         }
 
+        private MissingWebTextHandler _missing;
       //  private List<WebText> WebTexts { get; set; }
         private Dictionary<string,string> WebTextDictionary { get; set; }
 
@@ -29,13 +31,25 @@ namespace TrainingCamp.Web.Repository
 
             string htmlText = null;
             string webtText = null;
+            string returnText = null;
             if (WebTextDictionary != null)
             {
                 if (WebTextDictionary.TryGetValue(name, out webtText))
                 {
                     htmlText = webtText;
                 }
-                string returnText = string.IsNullOrEmpty(htmlText) ? defaultText : htmlText;
+                if (string.IsNullOrEmpty(htmlText))
+                {
+                    htmlText = defaultText;
+                    //_missing should have been injected via Dependency Injection
+                    // the view where this happens has probable been set before.
+                    // it will now insert the deafult or just log it.
+                    if (_missing != null)
+                    {
+                        _missing.DealWithIt(name, defaultText);
+                    }
+                }
+                returnText = htmlText;
                 return returnText;
             }
             else
