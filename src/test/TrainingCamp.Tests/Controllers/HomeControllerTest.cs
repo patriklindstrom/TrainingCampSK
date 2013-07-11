@@ -17,7 +17,8 @@ namespace TrainingCamp.Tests.Controllers
         {
             // Arrange
             HomeController controller = new HomeController();
-
+            var fakeRepo = new WebTextRepoMock();
+            controller.WebTextRepo = fakeRepo;
             // Act
             ViewResult result = controller.Index() as ViewResult;
 
@@ -25,30 +26,6 @@ namespace TrainingCamp.Tests.Controllers
             Assert.AreEqual("Shorjini Kempo Camp Stockholm 2014 homepage", result.ViewBag.Message);
         }
 
-        [TestMethod]
-        public void About()
-        {
-            // Arrange
-            HomeController controller = new HomeController();
-
-            // Act
-            ViewResult result = controller.About() as ViewResult;
-
-            // Assert
-            Assert.IsNotNull(result);
-        }
-
-        [TestMethod]
-        public void Contact()
-        {
-            // Arrange
-            HomeController controller = new HomeController();
-
-            // Act
-            ViewResult result = controller.Contact() as ViewResult;
-
-            // Assert
-            Assert.IsNotNull(result);
-        }
+       
     }
 }
