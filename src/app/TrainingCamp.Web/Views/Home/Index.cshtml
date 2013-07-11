@@ -1,151 +1,177 @@
-﻿@model List<TrainingCamp.Web.Repository.WebText>
+﻿@model TrainingCamp.Web.Repository.WebTextViewBag
 @{
-    ViewBag.Title = "Home Page";       
+    ViewBag.Title = "Home Page";
+    var foo = Html.ViewData;    
 }
-  <!-- slider -->
-  <section id="mySlider">
+<!-- slider -->
+<section id="mySlider">
     <div class="row">
-      <div class="span12">
-        <div id="banner" class="sliderWrapper">
-          <div class="oneByOne_item slideItem1"> <img src="~/images/sliders/bg-slide1.jpg"  class="bigImage" data-animate="fadeIn" alt=""> <img src="~/images/sliders/pic-slide1.png" class="slide1Img" alt="Be a super shorinji kempo student"  data-animate="fadeInLeftBig" />
-            <div class="slide1Txt1" data-animate="fadeInLeftBig">
-              <h1> <img src="~/images/theme-pics/slider-title.png" alt="Welcome to Stockholm" /> </h1>
+        <div class="span12">
+            <div id="banner" class="sliderWrapper">
+                <div class="oneByOne_item slideItem1">
+                    <img src="~/images/sliders/bg-slide1.jpg" class="bigImage" data-animate="fadeIn" alt="">
+                    <img src="~/images/sliders/pic-slide1.png" class="slide1Img" alt="Be a super shorinji kempo student" data-animate="fadeInLeftBig" />
+                    <div class="slide1Txt1" data-animate="fadeInLeftBig">
+                        <h1>
+                            <img src="~/images/theme-pics/slider-title.png" alt="Welcome to Stockholm" />
+                        </h1>
+                    </div>
+                    <div class="slide1Txt2" data-animate="fadeInRightBig">
+                        <h2>Shorinji Kempo training Camp<br />
+                            May 2014 in Stockholm</h2>
+                    </div>
+                    <div class="slide1Txt3" data-animate="fadeInLeftBig"><a href="~/Camp" class="btn">Read more</a> </div>
+                </div>
+                <div class="oneByOne_item slideItem2">
+                    <img src="~/images/sliders/bg-slide2.jpg" class="bigImage" alt="blue background">
+                    <img src="~/images/sliders/pic-slide2-1.png" class="slide2Img1" alt="Outside food grill at Bosön" data-animate="fadeInLeftBig" />
+                    <img src="~/images/sliders/pic-slide2-3.png" class="slide2Img3" alt="Picture of Bosön from airplane" data-animate="fadeInLeftBig" />
+                    <img src="~/images/sliders/pic-slide2-2.png" class="slide2Img2" alt="Girl sitting by the sea on bridge" data-animate="fadeInLeftBig" />
+                    <img src="~/images/sliders/pic-slide2.png" class="slide2Img" alt="Shorinji Kempo throw Alex Tilly and Pontus Haglund" data-animate="fadeInLeftBig" />
+                    <div class="slide2Txt1" data-animate="lightSpeedIn">
+                        <h1></h1>
+                    </div>
+                    <div class="slide2Txt2" data-animate="lightSpeedIn">
+                        <h2><i class="icon-star"></i>@Model.GetWebHtmlText("slide2Txt2", "The Camp is 3 days with Embu competion")  yeah </h2>
+                    </div>
+
+
+                    <div class="slide2Txt3" data-animate="lightSpeedIn">
+                        <h2><i class="icon-star"></i>Beautiful training camp Bosön  </h2>
+                    </div>
+                    <div class="slide2Txt4" data-animate="fadeInLeftBig"><a href="~/contact" class="btn btn-large">Sign up!</a> </div>
+                </div>
+                <div class="oneByOne_item slideItem3">
+                    <img src="~/images/sliders/bg-slide3.jpg" class="bigImage" data-animate="fadeIn" alt="">
+                    <img src="~/images/sliders/pic-slide3.png" class="slide3Img" alt="Splash Logo" data-animate="fadeInLeftBig" />
+                    <div class="slide3Txt1" data-animate="fadeInLeftBig">
+                        <h1>For 1 kyu and above</h1>
+                    </div>
+                    <div class="slide3Txt2" data-animate="fadeInRightBig">
+                        <h2>Only 25 min from central Stockholm</h2>
+                    </div>
+                    <div class="slide3Txt3" data-animate="fadeInRightBig">
+                        <p>The international training camp will have Hombu instructors. It will be in a big well organized training camp facility with activites for family members.</p>
+                    </div>
+                    <div class="slide3Txt3 " data-animate="fadeInLeftBig"><a href="~/family" class="btn">@Model.GetWebHtmlText("ReadMoreCap","Read more")</a></div>
+                </div>
+                <div class="oneByOne_item slideItem4">
+                    <img src="~/images/sliders/bg-slide4.jpg" class="bigImage" alt="">
+                    <img src="~/images/sliders/pic-slide4-1.png" class="slide4Img1" alt="Cat in front of Computer readey to Sign up" data-animate="fadeInLeftBig" />
+                    <img src="~/images/sliders/pic-slide4.png" class="slide4Img" alt="Jump kick by Arnaud Tiquet" data-animate="fadeInRightBig" />
+                    <div class="slide4Txt1" data-animate="fadeInDownBig">
+                        <h1>Embu competition</h1>
+                    </div>
+                    <div class="slide4Txt2" data-animate="fadeInDownBig">
+                        <p>The open Swedish Embu masters will take place at the camp.   </p>
+                    </div>
+                    <div class="slide4Txt4" data-animate="fadeInLeftBig"><a href="~/Embu" target="_blank" class="btn">Sign up you too</a> </div>
+                </div>
             </div>
-            <div class="slide1Txt2" data-animate="fadeInRightBig">
-              <h2>Shorinji Kempo training Camp<br />
-               May 2014 in Stockholm</h2>
-            </div>
-            <div class="slide1Txt3" data-animate="fadeInLeftBig"> <a href="~/Camp" class="btn">Read more</a> </div>
-          </div>
-          <div class="oneByOne_item slideItem2"> <img src="~/images/sliders/bg-slide2.jpg"  class="bigImage" alt="blue background"> <img src="~/images/sliders/pic-slide2-1.png" class="slide2Img1" alt="Outside food grill at Bosön"  data-animate="fadeInLeftBig" /> <img src="~/images/sliders/pic-slide2-3.png" class="slide2Img3" alt="Picture of Bosön from airplane"  data-animate="fadeInLeftBig" /> <img src="~/images/sliders/pic-slide2-2.png" class="slide2Img2" alt="Girl sitting by the sea on bridge"  data-animate="fadeInLeftBig" /> <img src="~/images/sliders/pic-slide2.png" class="slide2Img" alt="Shorinji Kempo throw Alex Tilly and Pontus Haglund"  data-animate="fadeInLeftBig" />
-            <div class="slide2Txt1" data-animate="lightSpeedIn">
-              <h1></h1>
-            </div>
-            <div class="slide2Txt2" data-animate="lightSpeedIn">
-              <h2> <i class="icon-star"></i> @Model.FirstOrDefault(t=>t.Name=="slide2Txt2").HtmlText  yeah </h2>
-            </div>
-            <div class="slide2Txt3" data-animate="lightSpeedIn">
-              <h2> <i class="icon-star"></i> Beautiful training camp Bosön  </h2>
-            </div>
-            <div class="slide2Txt4" data-animate="fadeInLeftBig"> <a href="~/contact" class="btn btn-large">Sign up!</a> </div>
-          </div>
-          <div class="oneByOne_item slideItem3"> <img src="~/images/sliders/bg-slide3.jpg"  class="bigImage" data-animate="fadeIn" alt=""> <img src="~/images/sliders/pic-slide3.png" class="slide3Img" alt="Splash Logo"  data-animate="fadeInLeftBig" />
-            <div class="slide3Txt1" data-animate="fadeInLeftBig">
-              <h1>For 1 kyu and above</h1>
-            </div>
-            <div class="slide3Txt2" data-animate="fadeInRightBig">
-              <h2>Only 25 min from central Stockholm</h2>
-            </div>
-            <div class="slide3Txt3" data-animate="fadeInRightBig">
-              <p> The international training camp will have Hombu instructors. It will be in a big well organized training camp facility with activites for family members.</p>
-            </div>
-            <div class="slide3Txt3 " data-animate="fadeInLeftBig"><a href="~/family" class="btn">Read more</a></div>
-          </div>
-          <div class="oneByOne_item slideItem4"> <img src="~/images/sliders/bg-slide4.jpg"  class="bigImage" alt=""> <img src="~/images/sliders/pic-slide4-1.png" class="slide4Img1" alt="Cat in front of Computer readey to Sign up"  data-animate="fadeInLeftBig" /> <img src="~/images/sliders/pic-slide4.png" class="slide4Img" alt="Jump kick by Arnaud Tiquet"  data-animate="fadeInRightBig" />
-            <div class="slide4Txt1" data-animate="fadeInDownBig">
-              <h1>Embu competition</h1>
-            </div>
-            <div class="slide4Txt2" data-animate="fadeInDownBig">
-              <p>The open Swedish Embu masters will take place at the camp.   </p>
-            </div>
-            <div class="slide4Txt4" data-animate="fadeInLeftBig"> <a href="~/Embu" target="_blank" class="btn">Sign up you too</a> </div>
-          </div>
         </div>
-      </div>
     </div>
-  </section>
+</section>
 <!-- slider -->
 <section class="content">
     <div class="row newsRow mb40">
-      <div class="span12">
-        <h2>@Model.FirstOrDefault(t=>t.Name=="LatestNewsHeader").HtmlText  <span>What's up doc</span></h2>
-      </div>
-      <article>
-        <div class="span4">
-          <header  class="clearfix"> <a href="~/blog/post/start-up"><img alt="" src="~/images/blog/Start-up-meeting.jpg" class="mb15"></a>
-            <div class="newsDate">29 <span>jun</span></div>
-            <h3>First project meeting</h3>
-          </header>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor lacus ac justo varius in vehicula nibh mattis. Aenean ac diam metus. Aliquam tempor tincidunt pretium. </p>
-          <p> <a class="btn btn-small btn-inverse" href="~/blog/post/start-up">→ read more</a> </p>
+        <div class="span12">
+            <h2>@Model.GetWebHtmlText("LatestNewsHeader", "Latest News ")  <span>@Model.GetWebHtmlText("WhatsUp", "What's up doc") </span></h2>
         </div>
-      </article>
-      <article>
-        <div class="span4">
-          <header class="clearfix"><a href="~/blog/post/lessons-learned"><img alt="" src="~/images/blog/blog-pic2.jpg" class="mb15"></a>
-            <div class="newsDate">18<span>August</span></div>
-            <h3>Lessons learned</h3>
-          </header>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor lacus ac justo varius in vehicula nibh mattis. Aenean ac diam metus. Aliquam tempor tincidunt pretium. </p>
-          <p> <a class="btn btn-small btn-inverse" href="~/blog/post/lessons-learned">→ read more</a> </p>
-        </div>
-      </article>
-      <article>
-        <div class="span4">
-          <header  class="clearfix"><a href="~/blog/post/where-are-my-shoes"><img alt="" src="~/images/blog/blog-pic1.jpg" class="mb15"></a>
-            <div class="newsDate">20 <span>Sept</span></div>
-            <h3>Where are the shoes</h3>
-          </header>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor lacus ac justo varius in vehicula nibh mattis. Aenean ac diam metus. Aliquam tempor tincidunt pretium. </p>
-          <p> <a class="btn btn-small btn-inverse" href="~/blog/post/where-are-my-shoes">→ read more</a> </p>
-        </div>
-      </article>
+        <article>
+            <div class="span4">
+                <header class="clearfix">
+                    <a href="~/blog/post/start-up">
+                        <img alt="" src="~/images/blog/Start-up-meeting.jpg" class="mb15"></a>
+                    <div class="newsDate">29 <span>jun</span></div>
+                    <h3>@Model.GetWebHtmlText("BlogHeader_1", "First project meeting")</h3>
+                </header>
+                <p>@Model.GetWebHtmlText("Lorem_1", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor lacus ac justo varius in vehicula nibh mattis. Aenean ac diam metus. Aliquam tempor tincidunt pretium. ")</p>
+                <p><a class="btn btn-small btn-inverse" href="~/blog/post/start-up">→ @Model.GetWebHtmlText("ReadMore","read more")</a> </p>
+            </div>
+        </article>
+        <article>
+            <div class="span4">
+                <header class="clearfix">
+                    <a href="~/blog/post/lessons-learned">
+                        <img alt="" src="~/images/blog/blog-pic2.jpg" class="mb15"></a>
+                    <div class="newsDate">18<span>August</span></div>
+                    <h3>@Model.GetWebHtmlText("BlogHeader_2", "Lessons learned")</h3>
+                </header>
+                <p>@Model.GetWebHtmlText("Lorem_1", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor lacus ac justo varius in vehicula nibh mattis. Aenean ac diam metus. Aliquam tempor tincidunt pretium. ")</p>
+                <p><a class="btn btn-small btn-inverse" href="~/blog/post/lessons-learned">→ @Model.GetWebHtmlText("ReadMore","read more")</a> </p>
+            </div>
+        </article>
+        <article>
+            <div class="span4">
+                <header class="clearfix">
+                    <a href="~/blog/post/where-are-my-shoes">
+                        <img alt="" src="~/images/blog/blog-pic1.jpg" class="mb15"></a>
+                    <div class="newsDate">20 <span>Sept</span></div>
+                    <h3>@Model.GetWebHtmlText("BlogHeader_3", "Where are the shoes")</h3>
+                </header>
+                <p>@Model.GetWebHtmlText("Lorem_1", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor lacus ac justo varius in vehicula nibh mattis. Aenean ac diam metus. Aliquam tempor tincidunt pretium. ")</p>
+                <p><a class="btn btn-small btn-inverse" href="~/blog/post/where-are-my-shoes">→ @Model.GetWebHtmlText("ReadMore","read more")</a> </p>
+            </div>
+        </article>
     </div>
     <div class="row mb15">
-      <div class="span12">
-        <h2>Contact us <span>Get in touch</span></h2>
-      </div>
-      <div class="span4"> <img src="images/main-logo.png" alt="Shornji Kempo Stockholm Training Camp 2014 logo " class="mb15">
-        <h4><i class="icon-mail"></i> Address:</h4>
-<address>
-                        
-                                <i class="icon-location"></i>&nbsp;Shoriji Kempo Stockholm S&ouml;dra<br>
-                                &Ouml;stg&ouml;tagatan 25, Stockholm Sweden USA
+        <div class="span12">
+            <h2>@Model.GetWebHtmlText("ContactUs","Contact us") <span>@Model.GetWebHtmlText("GetInTouch","Get in touch") </span></h2>
+        </div>
+        <div class="span4">
+            <img src="images/main-logo.png" alt="Shornji Kempo Stockholm Training Camp 2014 logo " class="mb15">
+            <h4><i class="icon-mail"></i>@Model.GetWebHtmlText("Address","Address:")</h4>
+            <address>
+                <p>
+                    <i class="icon-location"></i>&nbsp;Shoriji Kempo Stockholm S&ouml;dra<br>
+                    &Ouml;stg&ouml;tagatan 25, Stockholm Sweden USA
                                     <br>
-                                <i class="icon-phone"></i>&nbsp;+46 70 666 555 444
+                    <i class="icon-phone"></i>&nbsp;+46 70 666 555 444
                                     <br>
-                                <i class="icon-mail-alt"></i>&nbsp;<a href="mailto:info@skintc2014.com">info@skintc2014.com</a>
-                            </p>
-                        </address>
-        <h4><i class="icon-mobile-1"></i> Phone</h4>
-                          +46 70 555 666 444 </div>
+                    <i class="icon-mail-alt"></i>&nbsp;<a href="mailto:info@skintc2014.com">info@skintc2014.com</a>
+                </p>
+            </address>
+            <h4><i class="icon-mobile-1"></i>@Model.GetWebHtmlText("Phone","Phone:")</h4>
+            +46 70 555 666 444
+        </div>
 
-      <!-- contact form -->
-      <div class="span8">
-        <form method="post" action="js-plugin/neko-contact-ajax-plugin/php/form-handler.php" id="contactfrm">
-          <label for="name"></label>
-          <input type="text" name="name" id="name" placeholder="Name"   title="Please enter your name (at least 2 characters)"/>
-          <label for="email"></label>
-          <input type="text" name="email" id="email" placeholder="Email"  title="Please enter a valid email address"/>
-          <label for="phone"></label>
-          <input name="phone" type="text" id="phone" size="30" value="" placeholder="Phone"  title="Please enter a valid phone number (at least 10 characters)">
-          <label for="comments"></label>
-          <textarea name="comment" id="comments" cols="3" rows="5"  placeholder="Enter your message…" title="Please enter your message (at least 10 characters)" ></textarea>
-          <fieldset class="clearfix securityCheck">
-          <legend>Security</legend>
-          <div class="row">
-            <div class="span8 pull-left humanCheck">
-              <div class="row">
-                <label for="verify" class="span2"><img src="js-plugin/neko-contact-ajax-plugin/php/image.php" alt="Image verification"/></label>
-                <div class="span6">
-                  <input class="required"  id="verify" name="verify" type="text">
-                </div>
-              </div>
-            </div>
-          </div>
-          </fieldset>
-          <button name="submit" type="submit" class="btn" id="submit"> Submit</button>
-        </form>
-        <div class="result"></div>
-      </div>
-      <!-- contact form -->
+        <!-- contact form -->
+        <div class="span8">
+            <form method="post" action="js-plugin/neko-contact-ajax-plugin/php/form-handler.php" id="contactfrm">
+                <label for="name"></label>
+                <input type="text" name="name" id="name" placeholder="Name" title = @Model.GetWebHtmlTextWithQuotes("NameHint","Please enter your name (at least 2 characters)") />
+                <label for="email"></label>
+                <input type="text" name="email" id="email" placeholder="Email" title= @Model.GetWebHtmlTextWithQuotes("EmailHint","Please enter a valid email address" )/>
+                <label for="phone"></label>
+                <input name="phone" type="text" id="phone" size="30" value="" placeholder="Phone" title = @Model.GetWebHtmlTextWithQuotes("PhoneHint","Please enter a valid phone number (at least 10 characters)")/>
+                <label for="comments"></label>
+                <textarea name="comment" id="comments" cols="3" rows="5" placeholder="Enter your message…" title= @Model.GetWebHtmlTextWithQuotes("CommentHint","Please enter your message (at least 10 characters)")></textarea>
+                <fieldset class="clearfix securityCheck">
+                    <legend>Security</legend>
+                    <div class="row">
+                        <div class="span8 pull-left humanCheck">
+                            <div class="row">
+                                <label for="verify" class="span2">
+                                    <img src="~/ExtLibs/js-plugin/neko-contact-ajax-plugin/php/image.php" alt="Image verification" /></label>
+                                <div class="span6">
+                                    <input class="required" id="verify" name="verify" type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <button name="submit" type="submit" class="btn" id="submit">@Model.GetWebHtmlTextWithQuotes("Submit","Submit")</button>
+            </form>
+            <div class="result"></div>
+        </div>
+        <!-- contact form -->
     </div>
     <!-- map -->
     <div class="row mb40">
-      <div class="span12">
-        <div id="mapWrapper"></div>
-      </div>
+        <div class="span12">
+            <div id="mapWrapper"></div>
+        </div>
     </div>
     <!-- map -->
-  </section>
+</section>
 <!-- end content -->

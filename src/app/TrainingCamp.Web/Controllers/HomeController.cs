@@ -14,9 +14,10 @@ namespace TrainingCamp.Web.Controllers
         public ActionResult Index(string lang="en")
         {
             List<WebText> webTexts = this.WebTextRepo.GetAllWebTextRepoForView("Home", lang);
+            var webTextViewBag = new WebTextViewBag(webTexts);
             ViewBag.Message = "Shorjini Kempo Camp Stockholm 2014 homepage";
 
-            return View(webTexts);
+            return View(webTextViewBag);
         }
 
         public ActionResult About()
