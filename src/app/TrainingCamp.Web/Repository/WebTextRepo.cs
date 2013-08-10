@@ -167,7 +167,7 @@ LEFT OUTER JOIN [dbo].[PersonAddress] AS [t1] ON [t0].[Id] = [t1].[PersonID]
                 Debug.Assert(RavenSession != null, "RavenSession != null");
                 var webTextCombinedList = from webTextFromLang in RavenSession.Query<WebText>()
                     join webTextToLang in RavenSession.Query<WebText>()
-                        on webTextFromLang.View equals webTextToLang.View
+                        on new WebText(null){View=webTextFromLang.View,Name=webTextFromLang.Name,Lang = rightLang} equals  new WebText(null){View=webTextToLang.View,Name=webTextToLang.Name,Lang = leftLang}                                                                      
                         into tempWebText
                                           from webTextR in tempWebText.DefaultIfEmpty
                                           (new WebText(String.Empty)
@@ -184,7 +184,6 @@ LEFT OUTER JOIN [dbo].[PersonAddress] AS [t1] ON [t0].[Id] = [t1].[PersonID]
                                       WebTextLeft = webTextFromLang,
                                       WebTextRight = webTextR
                                   };
-
                 viewSearchReturn = webTextCombinedList.ToList();
             }
             return viewSearchReturn;
