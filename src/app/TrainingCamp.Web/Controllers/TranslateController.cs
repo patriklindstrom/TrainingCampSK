@@ -32,7 +32,7 @@ namespace TrainingCamp.Web.Controllers
                 throw new NullReferenceException("Could not get webtext from WebTextRepo.SearchWebText for translation");
             }
 
-            ViewBag.Message = "Shorjini Kempo Camp Stockholm 2014 homepage";
+           
 
             return View(webTextTranslationviewModel);
 

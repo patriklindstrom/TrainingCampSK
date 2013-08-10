@@ -6,6 +6,7 @@ using System.Web;
 using Raven.Client;
 using Raven.Client.Document;
 using Raven.Client.Embedded;
+using Raven.Database.Indexing;
 
 namespace TrainingCamp.Web.Repository
 {
@@ -113,7 +114,80 @@ namespace TrainingCamp.Web.Repository
         public List<WebTextCombined> SearchWebTextLeftJoin(string viewName, string rightLang, string leftLang)
         {
 
-            throw new NotImplementedException();
+            /*
+             
+var query = (from p in dc.GetTable<Person>()
+join pa in dc.GetTable<PersonAddress>() on p.Id equals pa.PersonId into tempAddresses
+from addresses in tempAddresses.DefaultIfEmpty()
+select new { p.FirstName, p.LastName, addresses.State });
+
+
+SQL Translation
+
+-- Context: SqlProvider(Sql2005) Model: AttributedMetaModel Build: 3.5.21022.8
+SELECT [t0].[FirstName], [t0].[LastName], [t1].[State] AS [State]
+FROM [dbo].[Person] AS [t0]
+LEFT OUTER JOIN [dbo].[PersonAddress] AS [t1] ON [t0].[Id] = [t1].[PersonID]
+             * 
+             * var orderForBooks = from bk in bookList
+            join ordr in bookOrders
+            on bk.BookID equals ordr.BookID
+            into a
+            from b in a.DefaultIfEmpty(new Order())
+            select new
+            {
+                bk.BookID,
+                Name = bk.BookNm,
+                b.PaymentMode
+            };
+             * 
+             *  var webTextList = RavenSession.Query<WebText>()
+                                               .Where(t => t.View == viewName && t.Lang == rightLang)                                             
+                                               .ToList();
+             * 
+             * public String Id { get; set; }
+        //Keys
+        public String View { get; set; }
+        public String Name { get; set; }
+        public String Lang { get; set; }
+        //Data
+        public String HtmlText { get; set; }
+        public String Comment { get; set; }
+        //Metadata
+        public DateTime CreationTime { get; set; }
+        public string Translator { get; set; }
+
+             */
+            // Doing left joins in Linq is not pretty. Google it
+            // I want a list with pairs of webtexts for a View. It has to be a left join since
+            //The too language might be missing. Eg for view home token welcome en is: Hello but the there is no tuple for italian welcome.
+            List<WebTextCombined> viewSearchReturn = null;
+            using (RavenSession)
+            {
+                Debug.Assert(RavenSession != null, "RavenSession != null");
+                var webTextCombinedList = from webTextFromLang in RavenSession.Query<WebText>()
+                    join webTextToLang in RavenSession.Query<WebText>()
+                        on webTextFromLang.View equals webTextToLang.View
+                        into tempWebText
+                                          from webTextR in tempWebText.DefaultIfEmpty
+                                          (new WebText(String.Empty)
+                                          {
+                                              View = webTextFromLang.View,
+                                              Name = webTextFromLang.Name,
+                                              Lang = leftLang,
+                                              HtmlText = String.Empty,
+                                              Comment = String.Empty,
+                                              Translator = String.Empty
+                                          })
+                                  select new WebTextCombined
+                                  {
+                                      WebTextLeft = webTextFromLang,
+                                      WebTextRight = webTextR
+                                  };
+
+                viewSearchReturn = webTextCombinedList.ToList();
+            }
+            return viewSearchReturn;
         }
 
         public void AddTestData(IDocumentSession session)
