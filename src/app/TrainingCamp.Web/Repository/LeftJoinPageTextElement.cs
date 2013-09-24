@@ -8,12 +8,16 @@ using Raven.Client.Indexes;
 
 namespace TrainingCamp.Web.Repository
 {
-    public class LeftJoinPageTextElement : AbstractMultiMapIndexCreationTask<WebTextCombined>
+// ReSharper disable once InconsistentNaming The class name suffix implies for what combination of languages it is used for 
+    public class LeftJoinPageTextElement_en_sv : AbstractMultiMapIndexCreationTask<WebTextCombined>
     {
-        public LeftJoinPageTextElement()
+        private const string FROM_LANG = "en";
+        private const string TO_LANGUAGE = "sv";
+
+        public LeftJoinPageTextElement_en_sv()
         {
             AddMap<WebText>(baseElements =>
-                from baseElement in baseElements.Where(l => l.Lang == "en")
+                from baseElement in baseElements.Where(l => l.Lang == FROM_LANG)
                 select
                     new WebTextCombined
                     {
@@ -39,7 +43,7 @@ namespace TrainingCamp.Web.Repository
                     });
 
             AddMap<WebText>(compareElements =>
-                from compareElement in compareElements.Where(l => l.Lang == "sv")
+                from compareElement in compareElements.Where(l => l.Lang == TO_LANGUAGE)
                 select
                     new WebTextCombined
                     {
