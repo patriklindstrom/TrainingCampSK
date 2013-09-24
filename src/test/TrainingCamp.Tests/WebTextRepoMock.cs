@@ -27,60 +27,66 @@ namespace TrainingCamp.Tests
             {
                 case "en":
                     viewSearchReturn = new List<WebText>
+                    {
+                        new WebText()
                         {
-                            new WebText (TRANSLATOR)
-                                {
-                                    View = viewName,
-                                    Lang = "en",
-                                    Name = "LatestNewsHeader",
-                                    HtmlText = "Latest News "
-                                },
-                            new WebText  (TRANSLATOR)
-                                {
-                                    View = viewName,
-                                    Name = "slide2Txt2",
-                                     Lang = "en",
-                                    HtmlText = "The Camp is 3 days with Embu competion"
-                                }
-                        };
+                            View = viewName,
+                            Lang = "en",
+                            Name = "LatestNewsHeader",
+                            HtmlText = "Latest News ",
+                            Translator = TRANSLATOR
+                        },
+                        new WebText()
+                        {
+                            View = viewName,
+                            Name = "slide2Txt2",
+                            Lang = "en",
+                            HtmlText = "The Camp is 3 days with Embu competion",
+                            Translator = TRANSLATOR
+                        }
+                    };
                     break;
                 case "sv":
                     viewSearchReturn = new List<WebText>
+                    {
+                        new WebText()
                         {
-                            new WebText  (TRANSLATOR)
-                                {
-                                    View = viewName,
-                                    Lang = "sv",
-                                    Name = "LatestNewsHeader",
-                                    HtmlText = "Senaste nytt <span>Vad har hänt</span>"
-                                },
-                            new WebText  (TRANSLATOR)
-                                {
-                                    View = viewName,
-                                    Name = "slide2Txt2",
-                                    Lang = "sv",
-                                    HtmlText = "Lägret är på 3 dagar med Embu tävling"
-                                }
-                        };
+                            View = viewName,
+                            Lang = "sv",
+                            Name = "LatestNewsHeader",
+                            HtmlText = "Senaste nytt <span>Vad har hänt</span>",
+                            Translator = TRANSLATOR
+                        },
+                        new WebText()
+                        {
+                            View = viewName,
+                            Name = "slide2Txt2",
+                            Lang = "sv",
+                            HtmlText = "Lägret är på 3 dagar med Embu tävling",
+                            Translator = TRANSLATOR
+                        }
+                    };
                     break;
                 case "ja":
                     viewSearchReturn = new List<WebText>
+                    {
+                        new WebText()
                         {
-                            new WebText  (TRANSLATOR)
-                                {
-                                    View = viewName,
-                                    Lang = "ja",
-                                    Name = "LatestNewsHeader",
-                                    HtmlText = "最新ニュース"
-                                },
-                            new WebText  (TRANSLATOR)
-                                {
-                                    View = viewName,
-                                    Name = "slide2Txt2",
-                                    Lang = "ja",
-                                    HtmlText = "合宿はエンブと3日です"
-                                }
-                        };
+                            View = viewName,
+                            Lang = "ja",
+                            Name = "LatestNewsHeader",
+                            HtmlText = "最新ニュース",
+                            Translator = TRANSLATOR
+                        },
+                        new WebText()
+                        {
+                            View = viewName,
+                            Name = "slide2Txt2",
+                            Lang = "ja",
+                            HtmlText = "合宿はエンブと3日です",
+                            Translator = TRANSLATOR
+                        }
+                    };
                     break;
             }
 

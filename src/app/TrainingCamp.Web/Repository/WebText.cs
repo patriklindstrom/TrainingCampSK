@@ -4,9 +4,9 @@ namespace TrainingCamp.Web.Repository
 {
     public class WebText
     {
-        public WebText(string translator)
+        public WebText()
         {
-            Translator = translator;
+           
             CreationTime = DateTime.UtcNow;
         }
         //ID
@@ -34,7 +34,10 @@ namespace TrainingCamp.Web.Repository
     }
 
     public class WebTextCombined
-    {
+    { //key
+        public String View { get; set; }
+        public String Name { get; set; } 
+        //data
         public WebText WebTextLeft { get; set; }
         public WebText WebTextRight { get; set; }
 

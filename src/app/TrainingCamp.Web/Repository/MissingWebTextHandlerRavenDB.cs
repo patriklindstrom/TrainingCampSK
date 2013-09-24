@@ -24,6 +24,7 @@ namespace TrainingCamp.Web.Repository
     public class MissingWebTextFixer : MissingWebTextHandler
     {
         private const string DEFAULT_LANG = "en";
+        private const string MISSING_WEB_TEXT_FIXER = "MissingWebTextFixer";
         private readonly IWebTextRepo _webTextRepo;
 
         public MissingWebTextFixer(string viewKey, IWebTextRepo webTextRepo) : base(viewKey)
@@ -37,12 +38,13 @@ namespace TrainingCamp.Web.Repository
             //TODO: move this to repository and if exist make an update instead. Change to Upsert?
             //Check if it exist. It is possible that two keys are on same page and they are
             if (_webTextRepo.WebTextExist(name: name, viewName: ViewKey, lang: DEFAULT_LANG)) return;
-            var missingWebText = new WebText(translator: "MissingWebTextFixer")
+            var missingWebText = new WebText()
                 {
                     View = ViewKey,
                     Name = name,
                     HtmlText = defaultText,
-                    Lang = DEFAULT_LANG
+                    Lang = DEFAULT_LANG,
+                    Translator = MISSING_WEB_TEXT_FIXER
                 };
             _webTextRepo.AddWebText(missingWebText);
         }
