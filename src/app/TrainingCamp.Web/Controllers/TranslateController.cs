@@ -20,7 +20,7 @@ namespace TrainingCamp.Web.Controllers
             ViewBag.Message = "Translate Shorjini Kempo Camp Stockholm 2014 for language " + langname;
             WebTextTranslationViewModel webTextTranslationviewModel = null;
 
-            List<WebTextCombined> webTextCombined = this.WebTextRepo.SearchWebTextLeftJoin(viewName: controllername, rightLang: fromlang, leftLang: langname);
+            List<WebTextCombined> webTextCombined = this.WebTextRepo.SearchWebTextLeftJoinUgly(viewName: controllername, rightLang: fromlang, leftLang: langname);
 
 
             if (webTextCombined != null)

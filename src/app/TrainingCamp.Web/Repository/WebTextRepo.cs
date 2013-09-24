@@ -20,6 +20,7 @@ namespace TrainingCamp.Web.Repository
         void AddWebText(WebText webText);
         void EditWebText(int webTextId);
         List<WebTextCombined> SearchWebTextLeftJoin(string viewName, string rightLang, string leftLang);
+        List<WebTextCombined> SearchWebTextLeftJoinUgly(string viewName, string rightLang, string leftLang);
     }
 
     public class WebTextRepoRavenDB : IWebTextRepo
@@ -110,7 +111,27 @@ namespace TrainingCamp.Web.Repository
         {
             throw new NotImplementedException();
         }
+        public List<WebTextCombined> SearchWebTextLeftJoinUgly (string viewName, string rightLang, string leftLang)
+        {
 
+          
+            List<WebTextCombined> viewSearchReturn = null;
+            using (RavenSession)
+            {
+                var wTFromLang =
+                    from webTextFromLang in
+                        RavenSession.Load<List<WebText>>("WebTexts")                     
+                        ////<WebText>().Where(f => f.Lang == rightLang && f.View == viewName)
+                    select webTextFromLang
+                        ;
+                List<WebText> wTFromLangList = wTFromLang.ToList();
+
+                var webTextCombinedList = new List<WebTextCombined>();
+                
+                viewSearchReturn = webTextCombinedList.ToList();
+            }
+            return viewSearchReturn;
+        }
         public List<WebTextCombined> SearchWebTextLeftJoin(string viewName, string rightLang, string leftLang)
         {
 
