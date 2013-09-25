@@ -35,7 +35,7 @@ namespace TrainingCamp.Web.Repository
                     _documentStore.Initialize();
                     _documentStore.Conventions.IdentityPartsSeparator = "-";
                     IndexCreation.CreateIndexes(Assembly.GetCallingAssembly(), _documentStore);
-                    IndexCreation.CreateIndexes(typeof(LeftJoinPageTextElement).Assembly, _documentStore);
+                    IndexCreation.CreateIndexes(typeof(LeftJoinPageTextElement_en_sv).Assembly, _documentStore);
                 }
 
                 return _documentStore;

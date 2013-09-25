@@ -138,7 +138,7 @@ namespace TrainingCamp.Web.Repository
             using (RavenSession)
             {
                 Debug.Assert(RavenSession != null, "RavenSession != null");
-                var wt = RavenSession.Query<WebTextCombined, LeftJoinPageTextElement>();                
+                var wt = RavenSession.Query<WebTextCombined, LeftJoinPageTextElement_en_sv>();                
                 viewSearchReturn = wt.ToList();
             }
             return viewSearchReturn;
