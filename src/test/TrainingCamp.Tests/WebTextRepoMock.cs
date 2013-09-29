@@ -9,7 +9,12 @@ namespace TrainingCamp.Tests
 {
     internal class WebTextRepoMock : IWebTextRepo
     {
-        public string GetWebTextRepo(int id)
+        public WebText GetWebTextRepo(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void StoreWebText(WebText webText)
         {
             throw new NotImplementedException();
         }
@@ -114,7 +119,7 @@ namespace TrainingCamp.Tests
             throw new NotImplementedException();
         }
 
-        public List<WebTextCombined> SearchWebTextLeftJoin(string viewName, string rightLang, string leftLang)
+        public List<WebTextCombinedLight> SearchWebTextLeftJoin(string viewName, string rightLang, string leftLang)
         {
             throw new NotImplementedException();
         }

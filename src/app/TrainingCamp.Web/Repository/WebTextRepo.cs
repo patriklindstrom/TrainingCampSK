@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
 using Raven.Client;
 using Raven.Client.Document;
@@ -12,14 +13,15 @@ namespace TrainingCamp.Web.Repository
 {
     public interface IWebTextRepo
     {
-        string GetWebTextRepo(int id);
+        WebText GetWebTextRepo(string id);
+        void StoreWebText(WebText webText);
         List<WebText> SearchWebText(string name);
         List<WebText> SearchWebText(string viewName, string lang);
         List<WebText> SearchWebText(string viewName, string lang,string name);
         Boolean WebTextExist(string viewName, string lang, string name);
         void AddWebText(WebText webText);
         void EditWebText(int webTextId);
-        List<WebTextCombined> SearchWebTextLeftJoin(string viewName, string rightLang, string leftLang);
+        List<WebTextCombinedLight> SearchWebTextLeftJoin(string viewName, string rightLang, string leftLang);
         List<WebTextCombined> SearchWebTextLeftJoinUgly(string viewName, string rightLang, string leftLang);
     }
 
@@ -46,9 +48,30 @@ namespace TrainingCamp.Web.Repository
         }
 
 
-        public string GetWebTextRepo(int id)
+        public WebText GetWebTextRepo(string id)
         {
-            throw new NotImplementedException();
+            WebText wt = null;
+            using (RavenSession)
+            {
+                Debug.Assert(RavenSession != null, "RavenSession != null");
+                 wt = RavenSession.Load<WebText>(id);            
+            }
+            return wt;
+        }
+
+        public void StoreWebText(WebText webText)
+        {
+           
+            using (RavenSession)
+            {
+                Debug.Assert(RavenSession != null, "RavenSession != null");
+                Debug.Assert(webText != null, "webText != null");
+                webText.CreationTime = DateTime.Now;
+                webText.Translator=webText.Translator ?? "Unknown";
+                RavenSession.Store(webText);
+                RavenSession.SaveChanges();
+            }
+            
         }
 
         public List<WebText> SearchWebText(string name)
@@ -132,13 +155,14 @@ namespace TrainingCamp.Web.Repository
             }
             return viewSearchReturn;
         }
-        public List<WebTextCombined> SearchWebTextLeftJoin(string viewName, string rightLang, string leftLang)
+        public List<WebTextCombinedLight> SearchWebTextLeftJoin(string viewName, string rightLang, string leftLang)
         {
-            List<WebTextCombined> viewSearchReturn = null;
+            List<WebTextCombinedLight> viewSearchReturn = null;
             using (RavenSession)
             {
                 Debug.Assert(RavenSession != null, "RavenSession != null");
-                var wt = RavenSession.Query<WebTextCombined, LeftJoinPageTextElement_en_sv>();                
+                var wt = RavenSession.Query<WebTextCombinedLight, LeftJoinPageTextElementEnSv>().Where(x => x.View == viewName); 
+                //var wt = RavenSession.Query<WebTextCombined, LeftJoinPageTextElementEn>(); 
                 viewSearchReturn = wt.ToList();
             }
             return viewSearchReturn;

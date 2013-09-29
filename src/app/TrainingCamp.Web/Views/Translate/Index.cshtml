@@ -1,4 +1,4 @@
-﻿@model TrainingCamp.Web.Models.WebTextTranslationViewModel
+﻿@model TrainingCamp.Web.Models.WebTextTranslationListViewModel
 @{
     ViewBag.Title = "Translation of web text";
 }
@@ -9,12 +9,23 @@
 <h3>Click on a item to edit it in the table. </h3>
 <table class="table table-striped">
     <thead>
-        <tr><td>Id</td><td>Name</td><td>Time</td><td>Text</td><td>Comment</td><td>Translator</td></tr>
+        <tr><td>View</td><td>Name</td><td>Source Lang Text</td><td>Target Lang Text </td><td>Translator</td></tr>
     </thead>
     <tbody>
-        @foreach (var trRow in @Model.TranslationTexts)
+        @foreach (var trRow in @Model.CombinedTranslationTexts)
         {
-            <tr><td>@trRow.Id</td><td>@trRow.Name</td><td>@trRow.CreationTime</td><td>@trRow.HtmlTextShort</td><td>@trRow.CommentShort</td><td>@trRow.Translator</td></tr>           
+            <tr><td>@trRow.View</td><td>@trRow.Name</td><td>@trRow.SourceLangTxt</td><td>
+             @if (trRow.TargetLangTxt != "N/A")
+             {
+                 @Html.ActionLink(trRow.TargetLangTxt, "Edit", new {SourceLangId = trRow.LeftId, TargetLangId = trRow.RightId}, null)
+             }
+             else
+             {
+                  @Html.ActionLink("Translate", "Create", new {SourceLangId = trRow.LeftId,targetLang=Model.TargetLang,View=Model.View,Name=trRow.Name}, null)
+             }
+            </td><td>@trRow.TranslatorTarget
+                          
+                 </td></tr>           
         }
     </tbody>
 </table>

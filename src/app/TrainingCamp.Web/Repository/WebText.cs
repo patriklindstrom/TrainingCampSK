@@ -19,7 +19,7 @@ namespace TrainingCamp.Web.Repository
         public String HtmlText { get; set; }
         public String Comment { get; set; }
         //Metadata
-        public DateTime CreationTime { get; set; }
+        public DateTime? CreationTime { get; set; }
         public string Translator { get; set; }
     }
 
@@ -34,12 +34,35 @@ namespace TrainingCamp.Web.Repository
     }
 
     public class WebTextCombined
-    { //key
+    {
+//key
         public String View { get; set; }
         public String Name { get; set; } 
         //data
         public WebText WebTextLeft { get; set; }
         public WebText WebTextRight { get; set; }
 
+       // public string RightLang { get; set; }
+    }
+    public class WebTextCombinedLight
+    {
+        public int Count;
+        //key
+        public String View { get; set; }
+        public String Name { get; set; }
+        //data
+        public String WebLeftId { get; set; }
+        public String WebLeftHtmlText { get; set; }
+        public String WebLeftComment { get; set; }
+        public DateTime? WebLeftCreationTime { get; set; }
+        public string WebLeftTranslator { get; set; }
+        public String WebRightId { get; set; }
+        public String WebRightHtmlText { get; set; }
+        public String WebRightComment { get; set; }
+        public DateTime? WebRightCreationTime { get; set; }
+        public string WebRightTranslator { get; set; }
+        
+
+        // public string RightLang { get; set; }
     }
 }

@@ -1,0 +1,51 @@
+﻿@model TrainingCamp.Web.Models.WebTextTranslationViewModel
+
+@{
+    ViewBag.Title = "title";
+  
+}
+
+<h2>Create Translation</h2>
+@using (Html.BeginForm()) {
+	@Html.ValidationSummary(true)
+<fieldset>
+    <legend>WebTextElement to translate</legend>
+    <div>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SourceLang.HtmlText)
+        </div>
+        <div class="editor-label">
+            @Html.TextBoxFor(model => model.SourceLang.HtmlText)
+        </div>      
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.TargetLang.HtmlText)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.TargetLang.HtmlText)
+        @Html.ValidationMessageFor(model => model.TargetLang.HtmlText)
+    </div>
+        <div class="editor-label">
+        @Html.LabelFor(model => model.TargetLang.Comment)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.TargetLang.Comment)
+        @Html.ValidationMessageFor(model => model.TargetLang.Comment)
+    </div>
+            <div class="editor-label">
+        @Html.LabelFor(model => model.TargetLang.Translator)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.TargetLang.Translator)
+        @Html.ValidationMessageFor(model => model.TargetLang.Translator)
+    </div>
+    <p>
+			<input type="submit" value="Create" />
+		</p>
+</fieldset>
+}
+<div>
+	@Html.ActionLink("Back to List", "Index")
+</div>
