@@ -20,9 +20,9 @@ namespace TrainingCamp.Web.Repository
         List<WebText> SearchWebText(string viewName, string lang,string name);
         Boolean WebTextExist(string viewName, string lang, string name);
         void AddWebText(WebText webText);
-        void EditWebText(int webTextId);
         List<WebTextCombinedLight> SearchWebTextLeftJoin(string viewName, string rightLang, string leftLang);
         List<WebTextCombined> SearchWebTextLeftJoinUgly(string viewName, string rightLang, string leftLang);
+        void UpdateWebText(WebText tLWebText);
     }
 
     public class WebTextRepoRavenDB : IWebTextRepo
@@ -130,10 +130,7 @@ namespace TrainingCamp.Web.Repository
             RavenSession.Store(webTexts);
             RavenSession.SaveChanges();
         }
-        public void EditWebText(int webTextId)
-        {
-            throw new NotImplementedException();
-        }
+
         public List<WebTextCombined> SearchWebTextLeftJoinUgly (string viewName, string rightLang, string leftLang)
         {
 
@@ -155,6 +152,20 @@ namespace TrainingCamp.Web.Repository
             }
             return viewSearchReturn;
         }
+
+        public void UpdateWebText(WebText tLWebText)
+        {
+            using (RavenSession)
+            {
+                Debug.Assert(RavenSession != null, "RavenSession != null");
+                Debug.Assert(tLWebText != null, "webText != null");
+                tLWebText.CreationTime = DateTime.Now;
+                tLWebText.Translator = tLWebText.Translator ?? "Unknown";
+                RavenSession.Store(tLWebText);
+                RavenSession.SaveChanges();
+            }
+        }
+
         public List<WebTextCombinedLight> SearchWebTextLeftJoin(string viewName, string rightLang, string leftLang)
         {
             List<WebTextCombinedLight> viewSearchReturn = null;

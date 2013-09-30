@@ -128,5 +128,10 @@ namespace TrainingCamp.Tests
         {
             throw new NotImplementedException();
         }
+
+        public void UpdateWebText(WebText tLWebText)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

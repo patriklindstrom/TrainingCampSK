@@ -5,11 +5,46 @@
   
 }
 
-<h2>title</h2>
+<h2>Edit Translation</h2>
+@using (Html.BeginForm()) {
+	@Html.ValidationSummary(true)
+<fieldset>
+    <legend>WebTextElement to translate</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SourceLang.HtmlText)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayTextFor(model => model.SourceLang.HtmlText)
+        </div>      
 
+    <div class="editor-label">
+        @Html.LabelFor(model => model.TargetLang.HtmlText)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.TargetLang.HtmlText)
+        @Html.ValidationMessageFor(model => model.TargetLang.HtmlText)
+    </div>
+        <div class="editor-label">
+        @Html.LabelFor(model => model.TargetLang.Comment)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.TargetLang.Comment)
+        @Html.ValidationMessageFor(model => model.TargetLang.Comment)
+    </div>
+            <div class="editor-label">
+        @Html.LabelFor(model => model.TargetLang.Translator)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.TargetLang.Translator)
+        @Html.ValidationMessageFor(model => model.TargetLang.Translator)
+    </div>
+    <p>
+		<input type="submit" value="Edit" />
+	</p>
+</fieldset>
+}
 <div>
-    @Model.SourceLang.HtmlText
-</div>
-<div>
-    @Model.TargetLang.HtmlText
+   
+     @Html.ActionLink("Back to list", "Index", new {controllername = @Model.SourceLang.View, actionname="index",langname=@Model.TargetLang.Lang,fromLang=@Model.SourceLang.Lang }, null)
+   
 </div>

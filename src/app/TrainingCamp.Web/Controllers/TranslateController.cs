@@ -16,6 +16,10 @@ namespace TrainingCamp.Web.Controllers
         //
         // GET: /Translate/
 
+        public TranslateController()
+        {
+        }
+
         public ActionResult Index(string controllername, string actionname, string langname,string fromlang="en")
         {
             if (controllername == null) throw new ArgumentNullException("controllername");
@@ -130,13 +134,22 @@ namespace TrainingCamp.Web.Controllers
         // POST: /Fundlist/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(string TargetLangId,FormCollection collection)
+        public ActionResult Edit(string view, string name, string targetLang, string targetLangId, FormCollection values)
         {
+            WebText tLWebText = new WebText();
             try
             {
-                // TODO: Add update logic here
+                tLWebText.HtmlText = values["TargetLang.HtmlText"];
+                tLWebText.Translator = values["TargetLang.Translator"];
+                tLWebText.Comment = values["TargetLang.Comment"];
+                tLWebText.Lang = targetLang;
+                tLWebText.View = view;
+                tLWebText.Name = name;
+                tLWebText.Id = targetLangId;
 
-                return RedirectToAction("Index");
+                this.WebTextRepo.UpdateWebText(tLWebText);
+
+                return RedirectToAction("Index", new { controllername = view, actionname = "index", langname = targetLang, fromLang = "en" });
             }
             catch
             {

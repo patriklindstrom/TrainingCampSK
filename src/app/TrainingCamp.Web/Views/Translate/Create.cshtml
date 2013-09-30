@@ -10,14 +10,11 @@
 	@Html.ValidationSummary(true)
 <fieldset>
     <legend>WebTextElement to translate</legend>
-    <div>
-
-
         <div class="editor-label">
             @Html.LabelFor(model => model.SourceLang.HtmlText)
         </div>
         <div class="editor-label">
-            @Html.TextBoxFor(model => model.SourceLang.HtmlText)
+            @Html.DisplayTextFor(model => model.SourceLang.HtmlText)
         </div>      
 
     <div class="editor-label">
@@ -42,10 +39,11 @@
         @Html.ValidationMessageFor(model => model.TargetLang.Translator)
     </div>
     <p>
-			<input type="submit" value="Create" />
-		</p>
+		<input type="submit" value="Create" />
+	</p>
 </fieldset>
 }
 <div>
-	@Html.ActionLink("Back to List", "Index")
+     @Html.ActionLink("Back to list", "Index", new {controllername = @Model.SourceLang.View, actionname="index",langname=@Model.TargetLang.Lang,fromLang=@Model.SourceLang.Lang }, null)
+   
 </div>

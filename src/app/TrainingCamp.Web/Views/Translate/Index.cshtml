@@ -17,7 +17,7 @@
             <tr><td>@trRow.View</td><td>@trRow.Name</td><td>@trRow.SourceLangTxt</td><td>
              @if (trRow.TargetLangTxt != "N/A")
              {
-                 @Html.ActionLink(trRow.TargetLangTxt, "Edit", new {SourceLangId = trRow.LeftId, TargetLangId = trRow.RightId}, null)
+                 @Html.ActionLink(trRow.TargetLangTxt, "Edit", new {SourceLangId = trRow.LeftId,targetLang=Model.TargetLang,View=Model.View,Name=trRow.Name,TargetLangId = trRow.RightId}, null)
              }
              else
              {
