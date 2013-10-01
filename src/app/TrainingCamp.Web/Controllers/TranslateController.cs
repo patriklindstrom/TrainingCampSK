@@ -156,6 +156,50 @@ namespace TrainingCamp.Web.Controllers
                 return View();
             }
         }
+        public ActionResult CreateTextItem(string view, string sourceLang)
+        {
+            if (view == null) throw new ArgumentNullException("view");
+            
+            if (sourceLang == null) throw new ArgumentNullException("sourceLang");
+            ViewBag.Message = "Create  Webtext for Shorjini Kempo Camp Stockholm 2014 for  " + view;
+           
+            WebTextTranslationViewModel webTextTranslationviewModel = new WebTextTranslationViewModel
+                {
+                    SourceLang = new WebText(){View = view,Lang = sourceLang},
+                    TargetLang =null
+                };
+       
+            return View(webTextTranslationviewModel);
+
+        }
+
+        [HttpPost]
+        public ActionResult CreateTextItem(string view, string sourceLang, string targetLang, FormCollection values)
+        {
+            WebText tLWebText = new WebText();
+            try
+            {
+                // TODO: Add insert logic here
+                tLWebText.HtmlText = values["SourceLang.HtmlText"];
+                tLWebText.View = view;
+                tLWebText.Name = values["SourceLang.Name"];
+                tLWebText.Lang = sourceLang;
+                tLWebText.Translator = values["SourceLang.Translator"];
+                tLWebText.Comment = values["SourceLang.Comment"];
+               
+               
+                tLWebText.View = view;
+                this.WebTextRepo.StoreWebText(tLWebText);
+                // http://localhost:52332/Home/index/sv/translate/en
+                // url: "{controllername}/{actionname}/{langname}/translate/{fromlang}",
+                return RedirectToAction("Index", new { controllername = view, actionname = "index", langname = targetLang, fromLang = "en" });
+            }
+            catch
+            {
+                return View();
+            }
+
+        }
 
     }
 

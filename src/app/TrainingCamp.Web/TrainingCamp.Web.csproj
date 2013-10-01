@@ -695,6 +695,7 @@
     <Content Include="Views\Translate\Edit.cshtml" />
     <Content Include="Views\Translate\Create.cshtml" />
     <Content Include="Views\Translate\Details.cshtml" />
+    <Content Include="Views\Translate\CreateTextItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\RavenDB\" />

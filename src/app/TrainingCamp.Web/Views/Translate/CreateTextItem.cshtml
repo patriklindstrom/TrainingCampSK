@@ -1,0 +1,46 @@
+﻿@model TrainingCamp.Web.Models.WebTextTranslationViewModel
+@{
+    ViewBag.Title = "title";
+  
+}
+<h2>Create New WebTextItem</h2>
+@using (Html.BeginForm()) {
+	@Html.ValidationSummary(true)
+<fieldset>
+    <legend>WebTextElement to Create</legend>
+    <div class="editor-label">
+            @Html.LabelFor(model => model.SourceLang.Name)
+        </div>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.SourceLang.Name)
+        </div>  
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SourceLang.HtmlText)
+        </div>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.SourceLang.HtmlText)
+        </div>      
+
+        <div class="editor-label">
+        @Html.LabelFor(model => model.SourceLang.Comment)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.SourceLang.Comment)
+        @Html.ValidationMessageFor(model => model.SourceLang.Comment)
+    </div>
+            <div class="editor-label">
+        @Html.LabelFor(model => model.SourceLang.Translator)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.SourceLang.Translator)
+        @Html.ValidationMessageFor(model => model.SourceLang.Translator)
+    </div>
+    <p>
+		<input type="submit" value="Create New textitem for page" />
+	</p>
+</fieldset>
+}
+<div>
+     @Html.ActionLink("Back to list", "Index", new {controllername = @Model.SourceLang.View, actionname="index",fromLang=@Model.SourceLang.Lang }, null)
+   
+</div>
