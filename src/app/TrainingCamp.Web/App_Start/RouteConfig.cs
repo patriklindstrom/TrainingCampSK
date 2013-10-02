@@ -14,8 +14,8 @@ namespace TrainingCamp.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(
             name: "Translation",
-            url: "{controllername}/{actionname}/{langname}/translate/{fromlang}",
-            defaults: new { controller = "Translate", action = "Index",UrlParameter ="en" }
+            url: "{controllername}/{actionname}/{langname}/translate",
+            defaults: new { controller = "Translate", action = "Index" }
             );
 
             routes.MapRoute(

@@ -18,7 +18,7 @@ namespace TrainingCamp.Tests.Controllers
             controller.WebTextRepo = realRepo;
             string controllName = "Home";
             string actionName = "Index";
-            string langName = "it";
+            string langName = "jp";
             string fromLang = "en";
             string message = "Translate Shorjini Kempo Camp Stockholm 2014 for language " + langName;
             // Act

@@ -23,7 +23,7 @@ namespace TrainingCamp.Web.Controllers
         public ActionResult Index(string controllername, string actionname, string langname,string fromlang="en")
         {
             if (controllername == null) throw new ArgumentNullException("controllername");
-            ViewBag.Message = "Translate Shorjini Kempo Camp Stockholm 2014 for language " ;
+            ViewBag.Message = "Translate Shorjini Kempo Camp Stockholm 2014 for language " + langname;
             WebTextTranslationListViewModel webTextTranslationListviewModel = null;
 
             List<WebTextCombinedLight> webTextCombinedLight = this.WebTextRepo.SearchWebTextLeftJoin(viewName: controllername, rightLang: fromlang, leftLang: langname);

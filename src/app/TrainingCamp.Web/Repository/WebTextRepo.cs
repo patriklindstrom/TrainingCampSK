@@ -7,6 +7,7 @@ using System.Web;
 using Raven.Client;
 using Raven.Client.Document;
 using Raven.Client.Embedded;
+using Raven.Client.Indexes;
 using Raven.Database.Indexing;
 
 namespace TrainingCamp.Web.Repository
@@ -21,7 +22,6 @@ namespace TrainingCamp.Web.Repository
         Boolean WebTextExist(string viewName, string lang, string name);
         void AddWebText(WebText webText);
         List<WebTextCombinedLight> SearchWebTextLeftJoin(string viewName, string rightLang, string leftLang);
-        List<WebTextCombined> SearchWebTextLeftJoinUgly(string viewName, string rightLang, string leftLang);
         void UpdateWebText(WebText tLWebText);
     }
 
@@ -131,27 +131,7 @@ namespace TrainingCamp.Web.Repository
             RavenSession.SaveChanges();
         }
 
-        public List<WebTextCombined> SearchWebTextLeftJoinUgly (string viewName, string rightLang, string leftLang)
-        {
-
-          
-            List<WebTextCombined> viewSearchReturn = null;
-            using (RavenSession)
-            {
-                var wTFromLang =
-                    from webTextFromLang in
-                        RavenSession.Load<List<WebText>>("WebTexts")                     
-                        ////<WebText>().Where(f => f.Lang == rightLang && f.View == viewName)
-                    select webTextFromLang
-                        ;
-                List<WebText> wTFromLangList = wTFromLang.ToList();
-
-                var webTextCombinedList = new List<WebTextCombined>();
-                
-                viewSearchReturn = webTextCombinedList.ToList();
-            }
-            return viewSearchReturn;
-        }
+       
 
         public void UpdateWebText(WebText tLWebText)
         {
@@ -169,13 +149,24 @@ namespace TrainingCamp.Web.Repository
         public List<WebTextCombinedLight> SearchWebTextLeftJoin(string viewName, string rightLang, string leftLang)
         {
             List<WebTextCombinedLight> viewSearchReturn = null;
+            IQueryable<WebTextCombinedLight> wt;
+           
             using (RavenSession)
             {
                 Debug.Assert(RavenSession != null, "RavenSession != null");
-                var wt = RavenSession.Query<WebTextCombinedLight, LeftJoinPageTextElementEnSv>().Where(x => x.View == viewName); 
-                //var wt = RavenSession.Query<WebTextCombined, LeftJoinPageTextElementEn>(); 
-                viewSearchReturn = wt.ToList();
+           if (leftLang == "sv")
+            {
+                wt = RavenSession.Query<WebTextCombinedLight, LeftJoinPageTextElementEnSv>().Where(x => x.View == viewName); 
             }
+            else
+            {
+                 wt = RavenSession.Query<WebTextCombinedLight, LeftJoinPageTextElementEnJp>().Where(x => x.View == viewName); 
+            }
+              
+                
+                
+            }
+            viewSearchReturn = wt.ToList();
             return viewSearchReturn;
         }
 
