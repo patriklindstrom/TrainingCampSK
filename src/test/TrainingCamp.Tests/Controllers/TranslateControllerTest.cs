@@ -27,5 +27,17 @@ namespace TrainingCamp.Tests.Controllers
             // Assert
             Assert.AreEqual(message, result.ViewBag.Message);
         }
+
+        [TestMethod]
+        public void Get_Bing_Suggestion_Translation()
+        {
+            //Arrange
+            TranslateController controller = new TranslateController();
+            ITranslatorRepo translatorRepoMock = new TranslatorRepoMock();
+            //Act
+
+
+            //Assert
+        }
     }
 }

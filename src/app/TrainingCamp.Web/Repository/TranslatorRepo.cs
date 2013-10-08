@@ -11,9 +11,19 @@ using System.Web;
 
 namespace TrainingCamp.Web.Repository
 {
-    public class TranslatorRepo
+    public interface ITranslatorRepo
+    {
+        WebText GetTranslation(WebText webText,  string targetLang);
+        List<WebText> GetTranslation(List<WebText> webTextList ,string sourceLang,string targetLang);
+    }
+
+    public class TranslatorRepo : ITranslatorRepo
     {
         public TranslatorRepo()
+        {
+        }
+
+        private void OldMain()
         {
             const string toLang = "de";
             //const string toLang = "zh-CHS";
@@ -90,7 +100,7 @@ namespace TrainingCamp.Web.Repository
             Console.ReadLine();
         }
 
-        public string GetTranslation(WebText webText,  string targetLang)
+        public WebText GetTranslation(WebText webText,  string targetLang)
         {
             throw new NotImplementedException();
         }
