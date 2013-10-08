@@ -224,7 +224,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\TranslationPair.cs" />
     <Compile Include="Models\WebTextTranslationListViewModel.cs" />
     <Compile Include="Models\WebTextTranslationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -235,6 +234,7 @@
     <Compile Include="Repository\WebText.cs" />
     <Compile Include="Repository\WebTextRepo.cs" />
     <Compile Include="Models\WebTextViewBag.cs" />
+    <Compile Include="Controllers\AutoTranslatorController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\colors.css" />
