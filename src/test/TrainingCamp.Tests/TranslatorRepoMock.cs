@@ -33,5 +33,10 @@ namespace TrainingCamp.Tests
                 HtmlText = "Översatt Text " + targetLang + "??????" + wt.Name,
             }).ToList();
         }
+
+        public string GetBingToken()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

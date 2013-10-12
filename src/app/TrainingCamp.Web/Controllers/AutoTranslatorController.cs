@@ -11,7 +11,20 @@ namespace TrainingCamp.Web
 {
     public class AutoTranslatorController : ApiController
     {
-        public ITranslatorRepo TranslatorRepo { get; set; }       
+        //todo: Write new Get for javascript only get authtoken. write javascript get lang
+        public ITranslatorRepo TranslatorRepo { get; set; }
+
+        [HttpGet]
+        public string Get()
+        {
+                // todo make this depenency injected instead with tdt also.
+            TranslatorRepo = new TranslatorRepo();
+            var AuthToken = "foo";
+          AuthToken=  TranslatorRepo.GetBingToken();
+
+            return AuthToken;
+        }
+
         // GET api/<controller>
          [HttpPost]
         public WebText Get([FromBody] WebText webText,[FromUri] string targetLang)

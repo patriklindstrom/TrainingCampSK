@@ -15,6 +15,7 @@ namespace TrainingCamp.Web.Repository
     {
         WebText GetTranslation(WebText webText,  string targetLang);
         List<WebText> GetTranslation(List<WebText> webTextList ,string sourceLang,string targetLang);
+        string GetBingToken();
     }
 
     public class TranslatorRepo : ITranslatorRepo
@@ -34,8 +35,7 @@ namespace TrainingCamp.Web.Repository
             //Get Client Id and Client Secret from https://datamarket.azure.com/developer/applications/
             //Refer obtaining AccessToken (http://msdn.microsoft.com/en-us/library/hh454950.aspx) 
             //AdmAuthentication admAuth = new AdmAuthentication("HelloBingTranslator", "WEG1nbJcFpZB/64CmgJv+Zx+EZeIWbUqj23LAf2bEjh=");
-            AdmAuthentication admAuth = new AdmAuthentication("TrainingCamp",
-                "Vebd9/FrVsnoZrpn/8wMHRnCz9x3vw/CwoG8/dgIgQI=");
+            AdmAuthentication admAuth = new AdmAuthentication("HelloBingTranslator", "WEG1nbJcFpZB/64CmgJv+Zx+EZeIWbUqj23LAf2bEjg=");
             try
             {
                 admToken = admAuth.GetAccessToken();
@@ -108,6 +108,31 @@ namespace TrainingCamp.Web.Repository
         {
             throw new NotImplementedException();
         }
+
+        public string GetBingToken()
+        {
+            AdmAccessToken admToken = null;
+            AdmAuthentication admAuth = new AdmAuthentication("HelloBingTranslator",
+                "WEG1nbJcFpZB/64CmgJv+Zx+EZeIWbUqj23LAf2bEjg=");
+            try
+            {
+                admToken = admAuth.GetAccessToken();             
+            }
+            catch (WebException e)
+            {
+                ProcessWebException(e);
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey(true);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey(true);
+            }
+            return admToken.access_token;
+        }
+
         private static string DetectMethod(string authToken, string textToDetect)
         {
             //Keep appId parameter blank as we are sending access token in authorization header.

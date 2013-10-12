@@ -13,7 +13,7 @@
         <div class="editor-label">
             @Html.LabelFor(model => model.SourceLang.HtmlText)
         </div>
-        <div class="editor-label">
+        <div class="editor-label" id="SourceText">
             @Html.DisplayTextFor(model => model.SourceLang.HtmlText)
         </div>      
 
@@ -38,6 +38,10 @@
         @Html.EditorFor(model => model.TargetLang.Translator)
         @Html.ValidationMessageFor(model => model.TargetLang.Translator)
     </div>
+    <div>
+        <textarea id="translate" ></textarea>
+        <button type="button" name="translate" id="translatebtn" onclick="onTranslate('SourceText','translate')">AutoBing</button>
+    </div>
     <p>
 		<input type="submit" value="Edit" />
 	</p>
@@ -45,6 +49,54 @@
 }
 <div>
    
-     @Html.ActionLink("Back to list", "Index", new {controllername = @Model.SourceLang.View, actionname="index",langname=@Model.TargetLang.Lang,fromLang=@Model.SourceLang.Lang }, null)
+    @Html.ActionLink("Back to list", "Index", new {controllername = @Model.SourceLang.View, actionname="index",langname=@Model.TargetLang.Lang,fromLang=@Model.SourceLang.Lang }, null)
    
 </div>
+
+
+<script type="text/javascript">
+    window.accessToken = "@Model.AccessToken";
+    var Translate = {
+        baseUrl: "http://api.microsofttranslator.com/V2/Ajax.svc/",
+        appId: "Bearer " + encodeURIComponent(window.accessToken),
+        translate: function(text, from, to, callback) {
+            var s = document.createElement("script");
+            s.src = this.baseUrl + "/Translate";
+            s.src += "?oncomplete=" + callback;
+            s.src += "&appId=" + this.appId;
+            s.src += "&from" + encodeURIComponent(from);
+            s.src += "&to=" + encodeURIComponent(to);
+            s.src += "&text=" + encodeURIComponent(text);
+            document.getElementsByTagName("head")[0].appendChild(s);
+        }
+    };
+    var mycallback = function(result) { alert(result) ;};
+
+   
+  var   callBing = function (textToTranslate, whereToPut) {
+      window.accessToken = window.accessToken;
+        var mytextToTranslate = document.getElementById(textToTranslate);
+        var mywhereToPut = document.getElementById(whereToPut);
+        var from = "en", to = "es", text = mytextToTranslate.textContent;
+
+        var s = document.createElement("script");
+        s.src = "http://api.microsofttranslator.com/V2/Ajax.svc/Translate" +
+            "?appId=Bearer " + encodeURIComponent(window.accessToken) +
+            "&from=" + encodeURIComponent(from) +
+            "&to=" + encodeURIComponent(to) +
+            "&text=" + encodeURIComponent(text) +
+            "&oncomplete=mycallback";      
+    };
+    
+    function onTranslate(textToTranslate, whereToPut) {
+        Translate.translate("Hello World", "en", "es", "mycallback");
+
+    }
+        function mycallback(response)
+        {
+            var mywhereToPut = document.getElementById('translate');
+            mywhereToPut.value = response;
+        }
+
+    </script>
+

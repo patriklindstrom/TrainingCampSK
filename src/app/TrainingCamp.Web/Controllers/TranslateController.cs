@@ -101,13 +101,15 @@ namespace TrainingCamp.Web.Controllers
 
             WebText webTextSource = this.WebTextRepo.GetWebTextRepo(SourceLangId);
             WebText webTextTarget = this.WebTextRepo.GetWebTextRepo(TargetLangId);
-
+            var translateRepo = new TranslatorRepo();
+            string webTranslateToken = translateRepo.GetBingToken();
             if (webTextSource != null && webTextTarget != null)
             {
                 webTextTranslationviewModel = new WebTextTranslationViewModel
                 {
                     SourceLang = webTextSource,
-                    TargetLang = webTextTarget
+                    TargetLang = webTextTarget,
+                    AccessToken = webTranslateToken
                 };
             }
             else
