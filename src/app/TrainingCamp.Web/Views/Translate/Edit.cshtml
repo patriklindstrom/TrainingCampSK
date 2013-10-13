@@ -40,7 +40,7 @@
     </div>
     <div>
         <textarea id="translate" ></textarea>
-        <button type="button" name="translate" id="translatebtn" onclick="onTranslate()">AutoBing</button>
+        <button type="button"  id="translatebtn" onclick="onTranslate()">AutoBing</button>
     </div>
     <p>
 		<input type="submit" value="Edit" />
@@ -71,7 +71,8 @@
             document.getElementsByTagName("head")[0].appendChild(s);
         }
     };
-    var mycallback = function (result) { $("#translate").html( result ); };
+    var mycallback = function (result) { alert(result); };
+    //var mycallback = function (result) { $("#translate").html(result); };
    
 
     
