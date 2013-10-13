@@ -40,7 +40,7 @@
     </div>
     <div>
         <textarea id="translate" ></textarea>
-        <button type="button" name="translate" id="translatebtn" onclick="onTranslate('SourceText','translate')">AutoBing</button>
+        <button type="button" name="translate" id="translatebtn" onclick="onTranslate()">AutoBing</button>
     </div>
     <p>
 		<input type="submit" value="Edit" />
@@ -56,47 +56,70 @@
 
 <script type="text/javascript">
     window.accessToken = "@Model.AccessToken";
+
     var Translate = {
         baseUrl: "http://api.microsofttranslator.com/V2/Ajax.svc/",
-        appId: "Bearer " + encodeURIComponent(window.accessToken),
+        appId: "Bearer " + "http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=HelloBingTranslator&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fdatamarket.accesscontrol.windows.net%2f&Audience=http%3a%2f%2fapi.microsofttranslator.com&ExpiresOn=1381598401&Issuer=https%3a%2f%2fdatamarket.accesscontrol.windows.net%2f&HMACSHA256=ISGfjK4GJ09MY%2b4W%2bjh5PdwWAsO79paLa8%2bhHjqsCPs%3d",
         translate: function(text, from, to, callback) {
             var s = document.createElement("script");
             s.src = this.baseUrl + "/Translate";
             s.src += "?oncomplete=" + callback;
-            s.src += "&appId=" + this.appId;
-            s.src += "&from" + encodeURIComponent(from);
-            s.src += "&to=" + encodeURIComponent(to);
-            s.src += "&text=" + encodeURIComponent(text);
+            s.src += "&appId=" + window.accessToken;
+            s.src += "&from=" + from;
+            s.src += "&to=" + to;
+            s.src += "&text=" + text;
             document.getElementsByTagName("head")[0].appendChild(s);
         }
     };
-    var mycallback = function(result) { alert(result) ;};
-
+    var mycallback=function(result){alert(result)};
    
-  var   callBing = function (textToTranslate, whereToPut) {
-      window.accessToken = window.accessToken;
-        var mytextToTranslate = document.getElementById(textToTranslate);
-        var mywhereToPut = document.getElementById(whereToPut);
-        var from = "en", to = "es", text = mytextToTranslate.textContent;
 
-        var s = document.createElement("script");
-        s.src = "http://api.microsofttranslator.com/V2/Ajax.svc/Translate" +
-            "?appId=Bearer " + encodeURIComponent(window.accessToken) +
-            "&from=" + encodeURIComponent(from) +
-            "&to=" + encodeURIComponent(to) +
-            "&text=" + encodeURIComponent(text) +
-            "&oncomplete=mycallback";      
-    };
     
-    function onTranslate(textToTranslate, whereToPut) {
+    function onTranslate_old() {
         Translate.translate("Hello World", "en", "es", "mycallback");
 
     }
-        function mycallback(response)
-        {
-            var mywhereToPut = document.getElementById('translate');
-            mywhereToPut.value = response;
-        }
 
-    </script>
+    function onTranslate() {
+        GetBing();
+
+    }
+    function setHeader(xhr) {
+        var autKey = 'Bearer ' + window.accessToken 
+        xhr.setRequestHeader('Authorization', autKey);
+       }
+
+    
+
+    function GetBing() {
+        //Build up the URL for the request
+        var requestStr = "http://api.microsofttranslator.com/v2/Http.svc/Translate/?text=I+am+a+gypsy+man.&from=en&to=de";
+        
+        //Return the promise from making an XMLHttpRequest to the server
+        $.ajax({ url: requestStr, beforeSend: setHeader
+        })
+            .done(
+        //Callback for success
+            function (request) {
+                var results = [], count;
+
+                // Works for FireFox
+                var obj = JSON.parse(request);
+                // Wokrs for IE 10 and Chrome
+               // var obj = request;
+                // Verify if the service has returned images
+                if (obj.d !== undefined) {
+                    var items = obj.d.results;
+
+
+                }
+                else {
+
+                }
+            });
+    }
+  </script>
+
+
+
 
