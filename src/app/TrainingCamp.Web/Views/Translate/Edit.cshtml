@@ -81,7 +81,7 @@
     }
 
     function onTranslate() {
-        GetBing();
+        GetBong();
 
     }
     function setHeader(xhr) {
@@ -89,20 +89,68 @@
         xhr.setRequestHeader('Authorization', autKey);
        }
 
-    
+    var languageFrom = "en";
+    var languageTo = "de";
+    var text = "Use pixels to express measurements for padding and margins.";
+    function translate() {
+        PageMethods.GetAccessToken(OnSucceeded, OnFailed);
 
+    }
+    function OnSucceeded(result, usercontext, methodName) {
+
+        window.mycallback = function (response) {
+            document.getElementById('<%= lblResult.ClientID %>').innerHTML = "Translation for <br />source text: '" + text + "'<br /> from en to de <br /> " + response;
+        }
+
+        var s = document.createElement("script");
+        s.src = "http://api.microsofttranslator.com/V2/Ajax.svc/Translate?oncomplete=mycallback&appId=Bearer " + encodeURIComponent(result.access_token) + "&from=" + languageFrom + "&to=" + languageTo + "&text=" + text;
+        document.getElementsByTagName("head")[0].appendChild(s);
+    }
+    function OnFailed(error, userContext, methodName) {
+        alert("Error");
+    }
+
+    function GetBong() {
+        var request = $.ajax({
+            type: 'GET',
+            url: "http://api.microsofttranslator.com/v2/Http.svc/Translate/",
+            data: {
+                appId : "",
+                text: "Powerty",
+                contentType:"text/plain",
+                from: "en",
+                to: "de",
+                category:"general"
+            },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Bearer ' + window.accessToken);
+            }
+        });
+
+        request.done(function (data) {
+            $("#translate").html("<strong>" + data + "</strong> I am here");
+        });
+        request.fail(function (jqXHR, textStatus) {
+            alert("Request failed: " + textStatus);
+        });
+
+    }
     function GetBing() {
         //Build up the URL for the request
         var requestStr = "http://api.microsofttranslator.com/v2/Http.svc/Translate/?text=I+am+a+gypsy+man.&from=en&to=de";
-        
-        //Return the promise from making an XMLHttpRequest to the server
-        $.ajax({ url: requestStr, beforeSend: setHeader
+        var autKey = 'Bearer ' + window.accessToken;
+        this.request.setRequestHeader("Authorization", autKey);
+        //Return the promise from making an XMLHttpRequest to the server       
+       $.ajax({ 
+                type: 'GET',
+            cache:false,
+            url: requestStr,
+            beforeSend: setHeader
         })
             .done(
         //Callback for success
             function (request) {
                 var results = [], count;
-
                 // Works for FireFox
                 var obj = JSON.parse(request);
                 // Wokrs for IE 10 and Chrome
@@ -118,7 +166,7 @@
                 }
             });
     }
-  </script>
+</script>
 
 
 
