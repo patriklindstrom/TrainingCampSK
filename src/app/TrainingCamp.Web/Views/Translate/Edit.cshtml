@@ -90,7 +90,7 @@
        }
 
     var languageFrom = "en";
-    var languageTo = "de";
+    var languageTo = "ja";
     var text = "Use pixels to express measurements for padding and margins.";
     function translate() {
         PageMethods.GetAccessToken(OnSucceeded, OnFailed);
@@ -102,7 +102,7 @@
      
 
         var s = document.createElement("script");
-        s.src = "http://api.microsofttranslator.com/V2/Ajax.svc/Translate?oncomplete=mycallback&appId=" + "Bearer " + encodeURIComponent(window.accessToken) + "&from=" + encodeURIComponent(languageFrom) + "&to=" + encodeURIComponent(languageTo) + "&text=" + encodeURIComponent($("#SourceText")[0].textContent);
+        s.src = "http://api.microsofttranslator.com/V2/Ajax.svc/Translate?oncomplete=mycallback&appId=" + "Bearer " + encodeURIComponent(window.accessToken) + "&from= en" + "&to=" + encodeURIComponent(languageTo) + "&text=" + encodeURIComponent($("#SourceText")[0].textContent);
         document.getElementsByTagName("head")[0].appendChild(s);
     }
 
