@@ -71,7 +71,7 @@
             document.getElementsByTagName("head")[0].appendChild(s);
         }
     };
-    var mycallback=function(result){alert(result)};
+    var mycallback=function(result){alert(result);};
    
 
     
@@ -81,7 +81,7 @@
     }
 
     function onTranslate() {
-        GetBong();
+        GetBanged();
 
     }
     function setHeader(xhr) {
@@ -96,18 +96,13 @@
         PageMethods.GetAccessToken(OnSucceeded, OnFailed);
 
     }
-    function OnSucceeded(result, usercontext, methodName) {
 
-        window.mycallback = function (response) {
-            document.getElementById('<%= lblResult.ClientID %>').innerHTML = "Translation for <br />source text: '" + text + "'<br /> from en to de <br /> " + response;
-        }
 
+    function GetBanged() {
+        
         var s = document.createElement("script");
-        s.src = "http://api.microsofttranslator.com/V2/Ajax.svc/Translate?oncomplete=mycallback&appId=Bearer " + encodeURIComponent(result.access_token) + "&from=" + languageFrom + "&to=" + languageTo + "&text=" + text;
+        s.src = "http://api.microsofttranslator.com/V2/Ajax.svc/Translate?oncomplete=mycallback&appId=" + "Bearer " + window.accessToken + "&from=" + languageFrom + "&to=" + languageTo + "&text=" + encodeURIComponent(text);
         document.getElementsByTagName("head")[0].appendChild(s);
-    }
-    function OnFailed(error, userContext, methodName) {
-        alert("Error");
     }
 
     function GetBong() {
