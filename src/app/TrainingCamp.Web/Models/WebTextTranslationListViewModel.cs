@@ -32,6 +32,7 @@ namespace TrainingCamp.Web.Models
     public class WebTextTranslationListViewModel
     {
         public object View { get; set; }
+        public string SourceLang { get; set; }
         public string TargetLang { get; set; }
         private const int DISPLAY_LENGTH = 10;
         private const string DISPLAY_NULL = "N/A";

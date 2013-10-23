@@ -23,6 +23,7 @@ namespace TrainingCamp.Web.Repository
         void AddWebText(WebText webText);
         List<WebTextCombinedLight> SearchWebTextLeftJoin(string viewName, string rightLang, string leftLang);
         void UpdateWebText(WebText tLWebText);
+        
     }
 
     public class WebTextRepoRavenDB : IWebTextRepo
@@ -145,6 +146,8 @@ namespace TrainingCamp.Web.Repository
                 RavenSession.SaveChanges();
             }
         }
+
+
 
         public List<WebTextCombinedLight> SearchWebTextLeftJoin(string viewName, string rightLang, string leftLang)
         {

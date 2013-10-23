@@ -12,6 +12,7 @@ namespace TrainingCamp.Web.Controllers
     public class TranslateController : Controller
     {
         public IWebTextRepo WebTextRepo = new Repository.WebTextRepoRavenDB();
+        public TranslatorRepo TranslateRepo = new TranslatorRepo();
         //
         // GET: /Translate/
         public TranslateController()
@@ -25,7 +26,10 @@ namespace TrainingCamp.Web.Controllers
             List<WebTextCombinedLight> webTextCombinedLight = this.WebTextRepo.SearchWebTextLeftJoin(viewName: controllername, rightLang: fromlang, leftLang: langname);
             if (webTextCombinedLight != null)
             {
-                webTextTranslationListviewModel = new WebTextTranslationListViewModel(webTextCombinedLight, langname,controllername);
+                webTextTranslationListviewModel = new WebTextTranslationListViewModel(webTextCombinedLight, langname,controllername)
+                {
+                    SourceLang = fromlang
+                };
             }
             else
             {
@@ -180,6 +184,23 @@ namespace TrainingCamp.Web.Controllers
             catch
             {
                 return View();
+            }
+
+        }
+
+        public ActionResult TranslateAll(string sourceLang, string targetLang,string view)
+        {
+            try
+            {
+                var translateRepo = new TranslatorRepo();
+
+                this.TranslateRepo.TranslateAll(sourceLang, targetLang);
+                return RedirectToAction("Index", new { controllername = view, actionname = "index", langname = targetLang, fromLang = "en" });
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Index", new { controllername = view, actionname = "index", langname = targetLang, fromLang = "en" });
+                //Console.WriteLine(e);
             }
 
         }

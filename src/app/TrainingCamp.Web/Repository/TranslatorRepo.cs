@@ -16,6 +16,7 @@ namespace TrainingCamp.Web.Repository
         WebText GetTranslation(WebText webText,  string targetLang);
         List<WebText> GetTranslation(List<WebText> webTextList ,string sourceLang,string targetLang);
         string GetBingToken();
+        void TranslateAll(string sourceLang, string targetLang);
     }
 
     public class TranslatorRepo : ITranslatorRepo
@@ -186,6 +187,11 @@ namespace TrainingCamp.Web.Repository
                 }
             }
             Console.WriteLine("Http status code={0}, error message={1}", e.Status, strResponse);
+        }
+
+        public void TranslateAll(string sourceLang, string targetLang)
+        {
+            throw new NotImplementedException();
         }
     }
 

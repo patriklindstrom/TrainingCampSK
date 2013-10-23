@@ -38,5 +38,10 @@ namespace TrainingCamp.Tests
         {
             throw new NotImplementedException();
         }
+
+        public void TranslateAll(string sourceLang, string targetLang)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
