@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TrainingCamp.Web.Controllers;
 using TrainingCamp.Web.Repository;
@@ -38,6 +40,23 @@ namespace TrainingCamp.Tests.Controllers
 
 
             //Assert
+        }
+        [TestMethod]
+        public void Translate_All_For_Japanese()
+        {
+            //Arrange
+            TranslateController controller = new TranslateController();
+            //ITranslatorRepo translatorRepoMock = new TranslatorRepoMock();
+           // ITranslatorRepo translatorRepo = new TranslatorRepo();
+            //controller.translatorRepo = translatorRepo;
+            IWebTextRepo webTextRepo = new WebTextRepoMock();
+            controller.WebTextRepo = webTextRepo;
+            //Act
+            List<WebText> translatedWebText = controller.TranslateWebTexts("en", "sv");
+           // controller.TranslateAll("en", "sv", "Home");
+
+            //Assert
+          Assert.AreEqual(translatedWebText[0].HtmlText,"Latest News ");  
         }
     }
 }

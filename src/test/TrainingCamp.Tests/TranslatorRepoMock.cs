@@ -39,6 +39,11 @@ namespace TrainingCamp.Tests
             throw new NotImplementedException();
         }
 
+        public List<WebText> TranslateAll(string sourceLang, string targetLang, List<WebText> webTexts)
+        {
+            throw new NotImplementedException();
+        }
+
         public void TranslateAll(string sourceLang, string targetLang)
         {
             throw new NotImplementedException();

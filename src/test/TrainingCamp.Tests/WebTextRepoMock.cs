@@ -134,6 +134,14 @@ namespace TrainingCamp.Tests
             throw new NotImplementedException();
         }
 
-    
+        public List<WebText> ListWebTextForLang(string language)
+        {
+            return SearchWebText("Home", language);
+        }
+
+        public void StoreWebTexts(List<WebText> translatedWebTexts)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

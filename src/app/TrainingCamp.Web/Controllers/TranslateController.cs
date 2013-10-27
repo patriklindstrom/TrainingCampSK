@@ -192,9 +192,8 @@ namespace TrainingCamp.Web.Controllers
         {
             try
             {
-                var translateRepo = new TranslatorRepo();
-
-                this.TranslateRepo.TranslateAll(sourceLang, targetLang);
+                var translatedWebTexts = TranslateWebTexts(sourceLang, targetLang);
+                this.WebTextRepo.StoreWebTexts(translatedWebTexts);
                 return RedirectToAction("Index", new { controllername = view, actionname = "index", langname = targetLang, fromLang = "en" });
             }
             catch (Exception e)
@@ -203,6 +202,13 @@ namespace TrainingCamp.Web.Controllers
                 //Console.WriteLine(e);
             }
 
+        }
+
+        public List<WebText> TranslateWebTexts(string sourceLang, string targetLang)
+        {
+            List<WebText> webTexts = this.WebTextRepo.ListWebTextForLang(language: sourceLang);
+            List<WebText> translatedWebTexts = this.TranslateRepo.TranslateAll(sourceLang: sourceLang, targetLang:targetLang,webTexts:webTexts);
+            return translatedWebTexts;
         }
     }
 

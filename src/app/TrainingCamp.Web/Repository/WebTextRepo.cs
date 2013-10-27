@@ -23,7 +23,9 @@ namespace TrainingCamp.Web.Repository
         void AddWebText(WebText webText);
         List<WebTextCombinedLight> SearchWebTextLeftJoin(string viewName, string rightLang, string leftLang);
         void UpdateWebText(WebText tLWebText);
-        
+
+        List<WebText> ListWebTextForLang(string language);
+        void StoreWebTexts(List<WebText> translatedWebTexts);
     }
 
     public class WebTextRepoRavenDB : IWebTextRepo
@@ -147,6 +149,21 @@ namespace TrainingCamp.Web.Repository
             }
         }
 
+        public List<WebText> ListWebTextForLang(string language)
+        {
+            List<WebText> returnList = null;
+            using (RavenSession)
+            {
+                Debug.Assert(RavenSession != null, "RavenSession != null");
+                returnList = RavenSession.Query<WebText>().Where(t =>t.Lang == language).ToList();
+            }
+            return returnList;
+        }
+
+        public void StoreWebTexts(List<WebText> translatedWebTexts)
+        {
+            throw new NotImplementedException();
+        }
 
 
         public List<WebTextCombinedLight> SearchWebTextLeftJoin(string viewName, string rightLang, string leftLang)
@@ -157,17 +174,8 @@ namespace TrainingCamp.Web.Repository
             using (RavenSession)
             {
                 Debug.Assert(RavenSession != null, "RavenSession != null");
-           if (leftLang == "sv")
-            {
-                wt = RavenSession.Query<WebTextCombinedLight, LeftJoinPageTextElementEnSv>().Where(x => x.View == viewName); 
-            }
-            else
-            {
-                 wt = RavenSession.Query<WebTextCombinedLight, LeftJoinPageTextElementEnJp>().Where(x => x.View == viewName); 
-            }
-              
-                
-                
+                wt = leftLang == "sv" ? RavenSession.Query<WebTextCombinedLight, LeftJoinPageTextElementEnSv>().Where(x => x.View == viewName) 
+                                      : RavenSession.Query<WebTextCombinedLight, LeftJoinPageTextElementEnJp>().Where(x => x.View == viewName);
             }
             viewSearchReturn = wt.ToList();
             return viewSearchReturn;
