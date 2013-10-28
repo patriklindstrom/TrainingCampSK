@@ -114,9 +114,10 @@ namespace TrainingCamp.Web.Repository
         public List<WebText> GetTranslation(List<WebText> webTextList ,string sourceLang,string targetLang)
         {
             List<WebText> webTexts = null;
-            var access_token = GetBingToken();
+            var accessToken = GetBingToken();
+            string authorizationHeaderValue = "Bearer " + accessToken;
             string uri = "http://api.microsofttranslator.com/v2/Http.svc/TranslateArray";
-
+            //TODO: Next day chore make this xml built by xmldocument or xdocument.
             string body = "<TranslateArrayRequest>" +
                             "<AppId />" +
                             "<From>{0}</From>" +
@@ -139,7 +140,7 @@ namespace TrainingCamp.Web.Repository
 
             // create the request
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
-            request.Headers.Add("Authorization", access_token);
+            request.Headers.Add("Authorization", authorizationHeaderValue);
             request.ContentType = "text/xml";
             request.Method = "POST";
             using (System.IO.Stream stream = request.GetRequestStream())
@@ -273,7 +274,7 @@ namespace TrainingCamp.Web.Repository
 
         public List<WebText>  TranslateAll( string targetLang,string sourceLang,List<WebText> webTexts)
         {
-            //TODO: Next day chore
+            
            return GetTranslation(webTextList: webTexts, targetLang: targetLang, sourceLang: sourceLang);            
         }
     }

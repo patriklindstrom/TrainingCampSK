@@ -48,6 +48,23 @@ namespace TrainingCamp.Tests
                             Lang = "en",
                             HtmlText = "The Camp is 3 days with Embu competion",
                             Translator = TRANSLATOR
+                        },
+                         new WebText()
+                        {
+                            View = viewName,
+                            Name = "slide2Txt3",
+                            Lang = "en",
+                            HtmlText = "There is only one way to find out",
+                            Translator = TRANSLATOR
+                        }
+                        ,
+                         new WebText()
+                        {
+                            View = viewName,
+                            Name = "Footer",
+                            Lang = "en",
+                            HtmlText = "Shorinji Kempo is a system of \"self-defense and training\"",
+                            Translator = TRANSLATOR
                         }
                     };
                     break;
@@ -69,6 +86,23 @@ namespace TrainingCamp.Tests
                             Lang = "sv",
                             HtmlText = "Lägret är på 3 dagar med Embu tävling",
                             Translator = TRANSLATOR
+                        },
+                        new WebText()
+                        {
+                            View = viewName,
+                            Name = "slide2Txt3",
+                            Lang = "sv",
+                            HtmlText = "Sh.",
+                            Translator = TRANSLATOR
+                        }
+                        ,
+                                           new WebText()
+                        {
+                            View = viewName,
+                            Name = "Footer",
+                            Lang = "sv",
+                            HtmlText = "Shorinji Kempo är ett system för \"självförsvar och träning\"",
+                            Translator = TRANSLATOR
                         }
                     };
                     break;
@@ -89,6 +123,23 @@ namespace TrainingCamp.Tests
                             Name = "slide2Txt2",
                             Lang = "ja",
                             HtmlText = "合宿はエンブと3日です",
+                            Translator = TRANSLATOR
+                        },
+                       
+                        new WebText()
+                        {
+                            View = viewName,
+                            Name = "slide2Txt3",
+                            Lang = "ja",
+                            HtmlText = "見つけるための唯一の方法があります。",
+                            Translator = TRANSLATOR
+                        },
+                         new WebText()
+                        {
+                            View = viewName,
+                            Name = "Footer",
+                            Lang = "ja",
+                            HtmlText = " 少林寺拳法は「自衛隊・ トレーニング」のシステム。",
                             Translator = TRANSLATOR
                         }
                     };

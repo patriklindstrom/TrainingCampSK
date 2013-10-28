@@ -56,7 +56,7 @@ namespace TrainingCamp.Tests.Controllers
            // controller.TranslateAll("en", "sv", "Home");
 
             //Assert
-          Assert.AreEqual(translatedWebText[0].HtmlText,"Latest News ");  
+          Assert.AreEqual(translatedWebText[0].HtmlText,"Senaste nytt");  
         }
     }
 }
