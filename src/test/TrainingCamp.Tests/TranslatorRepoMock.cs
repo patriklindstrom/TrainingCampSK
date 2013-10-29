@@ -44,6 +44,11 @@ namespace TrainingCamp.Tests
             throw new NotImplementedException();
         }
 
+        public string ReqBody(List<WebText> webTextList, string sourceLang, string targetLang)
+        {
+            throw new NotImplementedException();
+        }
+
         public void TranslateAll(string sourceLang, string targetLang)
         {
             throw new NotImplementedException();

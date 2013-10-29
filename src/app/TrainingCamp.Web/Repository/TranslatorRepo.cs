@@ -21,7 +21,7 @@ namespace TrainingCamp.Web.Repository
         List<WebText> GetTranslation(List<WebText> webTextList ,string sourceLang,string targetLang);
         string GetBingToken();
         List<WebText> TranslateAll(string sourceLang, string targetLang,List<WebText>  webTexts);
-       
+        string ReqBody(List<WebText> webTextList, string sourceLang, string targetLang);
     }
 
     public class TranslatorRepo : ITranslatorRepo
@@ -113,31 +113,14 @@ namespace TrainingCamp.Web.Repository
         // http://msdn.microsoft.com/en-us/library/ff512419.aspx
         public List<WebText> GetTranslation(List<WebText> webTextList ,string sourceLang,string targetLang)
         {
+
+            //TODO: Next day chore make this xml built by xmldocument or xdocument.
+            var reqBody = ReqBody(webTextList, sourceLang, targetLang);
+
             List<WebText> webTexts = null;
             var accessToken = GetBingToken();
             string authorizationHeaderValue = "Bearer " + accessToken;
             string uri = "http://api.microsofttranslator.com/v2/Http.svc/TranslateArray";
-            //TODO: Next day chore make this xml built by xmldocument or xdocument.
-            string body = "<TranslateArrayRequest>" +
-                            "<AppId />" +
-                            "<From>{0}</From>" +
-                            "<Options>" +
-                               " <Category xmlns=\"http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2\" />" +
-                                "<ContentType xmlns=\"http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2\">{1}</ContentType>" +
-                                "<ReservedFlags xmlns=\"http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2\" />" +
-                                "<State xmlns=\"http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2\" />" +
-                                "<Uri xmlns=\"http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2\" />" +
-                                "<User xmlns=\"http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2\" />" +
-                            "</Options>" +
-                            "<Texts>" +
-                               "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">{2}</string>" +
-                               "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">{3}</string>" +
-                               "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">{4}</string>" +
-                            "</Texts>" +
-                            "<To>{5}</To>" +
-                         "</TranslateArrayRequest>";
-            string reqBody = string.Format(body, sourceLang, "text/plain", webTextList[0].HtmlText, webTextList[1].HtmlText, webTextList[2].HtmlText, targetLang);
-
             // create the request
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
             request.Headers.Add("Authorization", authorizationHeaderValue);
@@ -191,6 +174,34 @@ namespace TrainingCamp.Web.Repository
                 }
             }
             return webTexts;
+        }
+
+        public string ReqBody(List<WebText> webTextList, string sourceLang, string targetLang)
+        {
+            string body = "<TranslateArrayRequest>" +
+                          "<AppId />" +
+                          "<From>{0}</From>" +
+                          "<Options>" +
+                          " <Category xmlns=\"http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2\" />" +
+                          "<ContentType xmlns=\"http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2\">{1}</ContentType>" +
+                          "<ReservedFlags xmlns=\"http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2\" />" +
+                          "<State xmlns=\"http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2\" />" +
+                          "<Uri xmlns=\"http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2\" />" +
+                          "<User xmlns=\"http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2\" />" +
+                          "</Options>" +
+                          "<Texts>" +
+                          "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">{2}</string>" +
+                          "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">{3}</string>" +
+                          "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">{4}</string>" +
+                          "</Texts>" +
+                          "<To>{5}</To>" +
+                          "</TranslateArrayRequest>";
+
+            XDocument xbody = new XDocument();
+           
+            string reqBody = string.Format(body, sourceLang, "text/plain", webTextList[0].HtmlText, webTextList[1].HtmlText,
+                webTextList[2].HtmlText, targetLang);
+            return reqBody;
         }
 
         public string GetBingToken()
@@ -277,6 +288,8 @@ namespace TrainingCamp.Web.Repository
             
            return GetTranslation(webTextList: webTexts, targetLang: targetLang, sourceLang: sourceLang);            
         }
+
+
     }
 
     [DataContract]
