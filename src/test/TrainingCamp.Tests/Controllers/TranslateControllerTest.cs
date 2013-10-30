@@ -116,16 +116,31 @@ namespace TrainingCamp.Tests.Controllers
             //                )
             //        )
             //  );
-            XNamespace catNs = "http://www.adventure-works.com";
+            XNamespace catNs = "http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2";
+            XNamespace contNs = "http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2";
+            XNamespace resNs = "http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2";
+            XNamespace stateNs = "http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2";
+            XNamespace uriNs = "http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2";
+            XNamespace userNs = "http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2";
+            XNamespace arrNs = "http://schemas.microsoft.com/2003/10/Serialization/Arrays";
+
             XDocument xbody =
                 new XDocument(
                     new XElement("TranslateArrayRequest", 
                         new XElement("AppId"),
                         new XElement("From",sourceLang),
                         new XElement("Options",
-                        new XElement("Category", new XAttribute(XNamespace.Xmlns +"catNS", catNs))
-                         ))
-                         );
+                            new XElement("Category", new XAttribute(XNamespace.Xmlns +"catNS", catNs)),
+                            new XElement("ContentType", new XAttribute(XNamespace.Xmlns +"contNs", contNs)),
+                            new XElement("ReservedFlags", new XAttribute(XNamespace.Xmlns +"resNs", resNs)),
+                            new XElement("State", new XAttribute(XNamespace.Xmlns +"stateNs", stateNs)),
+                            new XElement("Uri", new XAttribute(XNamespace.Xmlns +"uriNs", uriNs)),
+                            new XElement("User", new XAttribute(XNamespace.Xmlns +"userNs", userNs))
+                         ),
+                        new XElement("Texts",
+                            new XElement("string", new XAttribute(XNamespace.Xmlns +"arrNs", arrNs))
+                         )
+                         ));
             string fooXml = xbody.ToString();
             var xmlReqBody = translatorRepo.ReqBody(webTextList, sourceLang, targetLang);
             //Assert
