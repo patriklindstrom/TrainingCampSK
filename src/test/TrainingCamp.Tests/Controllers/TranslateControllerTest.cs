@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using System.Xml;
@@ -135,12 +136,9 @@ namespace TrainingCamp.Tests.Controllers
                             new XElement("ReservedFlags", new XAttribute(XNamespace.Xmlns +"resNs", resNs)),
                             new XElement("State", new XAttribute(XNamespace.Xmlns +"stateNs", stateNs)),
                             new XElement("Uri", new XAttribute(XNamespace.Xmlns +"uriNs", uriNs)),
-                            new XElement("User", new XAttribute(XNamespace.Xmlns +"userNs", userNs))
-                         ),
-                        new XElement("Texts",
-                            new XElement("string", new XAttribute(XNamespace.Xmlns +"arrNs", arrNs))
-                         )
-                         ));
+                            new XElement("User", new XAttribute(XNamespace.Xmlns +"userNs", userNs)),
+                            new XElement("Texts",webTextList.Select(wt =>new XElement("string", new XAttribute(XNamespace.Xmlns + "arrNs", arrNs),wt.HtmlText))
+                            ))));
             string fooXml = xbody.ToString();
             var xmlReqBody = translatorRepo.ReqBody(webTextList, sourceLang, targetLang);
             //Assert
