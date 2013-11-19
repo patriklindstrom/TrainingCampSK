@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -23,7 +24,8 @@ namespace TrainingCamp.Web.Controllers
            
             if (webTexts!=null)
             {
-                 webTextViewBag = new WebTextViewBag(webTexts,missingWebTextHandler); 
+                Debug.Assert(lang != null, "lang != null");
+                webTextViewBag = new WebTextViewBag(webTexts,missingWebTextHandler,lang);
             }
             else
             {

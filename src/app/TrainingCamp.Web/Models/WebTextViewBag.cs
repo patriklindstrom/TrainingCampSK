@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Web.Mvc;
 using TrainingCamp.Web.Repository;
 
@@ -8,16 +9,17 @@ namespace TrainingCamp.Web.Models
 {
     public class WebTextViewBag
     {
-        public WebTextViewBag(IEnumerable<WebText> webTexts,MissingWebTextHandler missing)
+        public WebTextViewBag(IEnumerable<WebText> webTexts, MissingWebTextHandler missing, string lang)
         {
             WebTextDictionary = webTexts.ToDictionary(k=>k.Name,t=>t.HtmlText);
             _missing = missing;
+            Lang = lang;
         }
 
         private MissingWebTextHandler _missing;
       //  private List<WebText> WebTexts { get; set; }
         private Dictionary<string,string> WebTextDictionary { get; set; }
-
+        public string Lang { get; set; }
         public string GetWebHtmlText(string name, string defaultText)
         {
             if (String.IsNullOrEmpty(name))
