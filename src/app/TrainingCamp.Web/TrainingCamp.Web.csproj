@@ -70,6 +70,7 @@
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -229,9 +230,11 @@
     <Compile Include="Repository\DocumentStoreHolder.cs" />
     <Compile Include="Repository\LeftJoinPageTextElement.cs" />
     <Compile Include="Repository\MissingWebTextHandlerRavenDB.cs" />
+    <Compile Include="Repository\TranslatorRepo.cs" />
     <Compile Include="Repository\WebText.cs" />
     <Compile Include="Repository\WebTextRepo.cs" />
     <Compile Include="Models\WebTextViewBag.cs" />
+    <Compile Include="Controllers\AutoTranslatorController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\colors.css" />

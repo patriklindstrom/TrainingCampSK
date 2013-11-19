@@ -959,54 +959,9 @@ function appendBootstrap() {
 
 function initialize( id ) {
 
-    var geocoder;
-    var map ;
-    var myLatlng;
-    /* LAT: 59,3813 LONG: 18,1833 */
-    var address = 'Bos&ouml;n, Liding&ouml;, Stockholms l&auml;n, Sverige';
-    var PlaceName = 'Welcome to Bos&ouml;n - the heart of Swedish sports training and education';
-    var myOptions = {
-        zoom: parseInt(14),
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        scrollwheel: false
-    };
-    
-    id = (id == undefined) ? 'mapWrapper' : id;
-    
-    map = new google.maps.Map(document.getElementById(id), myOptions); 
-    
-    geocoder = new google.maps.Geocoder();
-
-    geocoder.geocode( {
-        'address': address
-    }, function(results, status) {
+  
 
 
-        myLatlng = results[0].geometry.location;
-
-        map.setCenter(myLatlng);
-
-
-        var contentString = '<div class="contentMap">'+PlaceName+'<br/>'+address+'</div>';
-
-        var marker = new google.maps.Marker({
-            position: myLatlng,
-            map: map,
-            title: 'Locate Us'
-        });
-
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
-        });
-
-
-        google.maps.event.addListener(marker, 'click', function() {
-            infowindow.open(map,this);
-        });
-
-
-
-    }); 
 
 }
 /*

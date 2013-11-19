@@ -13,7 +13,7 @@
         <div class="editor-label">
             @Html.LabelFor(model => model.SourceLang.HtmlText)
         </div>
-        <div class="editor-label">
+        <div class="editor-label" id="SourceText">
             @Html.DisplayTextFor(model => model.SourceLang.HtmlText)
         </div>      
 
@@ -38,6 +38,10 @@
         @Html.EditorFor(model => model.TargetLang.Translator)
         @Html.ValidationMessageFor(model => model.TargetLang.Translator)
     </div>
+    <div>
+        <textarea id="translate" ></textarea>
+        <button type="button"  id="translatebtn" onclick="onTranslate()">AutoBing</button>
+    </div>
     <p>
 		<input type="submit" value="Edit" />
 	</p>
@@ -45,6 +49,122 @@
 }
 <div>
    
-     @Html.ActionLink("Back to list", "Index", new {controllername = @Model.SourceLang.View, actionname="index",langname=@Model.TargetLang.Lang,fromLang=@Model.SourceLang.Lang }, null)
+    @Html.ActionLink("Back to list", "Index", new {controllername = @Model.SourceLang.View, actionname="index",langname=@Model.TargetLang.Lang,fromLang=@Model.SourceLang.Lang }, null)
    
 </div>
+
+
+<script type="text/javascript">
+
+    window.accessToken = "@Html.Raw(Model.AccessToken)"  ;
+    var Translate = {
+        baseUrl: "http://api.microsofttranslator.com/V2/Ajax.svc/",
+        appId: "Bearer " + "http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=HelloBingTranslator&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fdatamarket.accesscontrol.windows.net%2f&Audience=http%3a%2f%2fapi.microsofttranslator.com&ExpiresOn=1381598401&Issuer=https%3a%2f%2fdatamarket.accesscontrol.windows.net%2f&HMACSHA256=ISGfjK4GJ09MY%2b4W%2bjh5PdwWAsO79paLa8%2bhHjqsCPs%3d",
+        translate: function(text, from, to, callback) {
+            var s = document.createElement("script");
+            s.src = this.baseUrl + "/Translate";
+            s.src += "?oncomplete=" + callback;
+            s.src += "&appId=" + window.accessToken;
+            s.src += "&from=" + from;
+            s.src += "&to=" + to;
+            s.src += "&text=" + text;
+            document.getElementsByTagName("head")[0].appendChild(s);
+        }
+    };
+    var mycallback = function (result) { alert(result); };
+    //var mycallback = function (result) { $("#translate").html(result); };
+   
+
+    
+    function onTranslate_old() {
+        Translate.translate("Hello World", "en", "es", "mycallback");
+
+    }
+
+    function onTranslate() {
+        GetBanged();
+
+    }
+    function setHeader(xhr) {
+        var autKey = 'Bearer ' + window.accessToken 
+        xhr.setRequestHeader('Authorization', autKey);
+       }
+
+    var languageFrom = "en";
+    var languageTo = "ja";
+    var text = "Use pixels to express measurements for padding and margins.";
+    function translate() {
+        PageMethods.GetAccessToken(OnSucceeded, OnFailed);
+
+    }
+
+
+    function GetBanged() {
+     
+
+        var s = document.createElement("script");
+        s.src = "http://api.microsofttranslator.com/V2/Ajax.svc/Translate?oncomplete=mycallback&appId=" + "Bearer " + encodeURIComponent(window.accessToken) + "&from= en" + "&to=" + encodeURIComponent(languageTo) + "&text=" + encodeURIComponent($("#SourceText")[0].textContent);
+        document.getElementsByTagName("head")[0].appendChild(s);
+    }
+
+    function GetBong() {
+        var request = $.ajax({
+            type: 'GET',
+            url: "http://api.microsofttranslator.com/v2/Http.svc/Translate/",
+            data: {
+                appId : "",
+                text: "Powerty",
+                contentType:"text/plain",
+                from: "en",
+                to: "de",
+                category:"general"
+            },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Bearer ' + window.accessToken);
+            }
+        });
+
+        request.done(function (data) {
+            $("#translate").html("<strong>" + data + "</strong> I am here");
+        });
+        request.fail(function (jqXHR, textStatus) {
+            alert("Request failed: " + textStatus);
+        });
+
+    }
+    function GetBing() {
+        //Build up the URL for the request
+        var requestStr = "http://api.microsofttranslator.com/v2/Http.svc/Translate/?text=I+am+a+gypsy+man.&from=en&to=de";
+        var autKey = 'Bearer ' + window.accessToken;
+        this.request.setRequestHeader("Authorization", autKey);
+        //Return the promise from making an XMLHttpRequest to the server       
+       $.ajax({ 
+                type: 'GET',
+            cache:false,
+            url: requestStr,
+            beforeSend: setHeader
+        })
+            .done(
+        //Callback for success
+            function (request) {
+                var results = [], count;
+                // Works for FireFox
+                var obj = JSON.parse(request);
+                // Wokrs for IE 10 and Chrome
+               // var obj = request;
+                // Verify if the service has returned images
+                if (obj.d !== undefined) {
+                    var items = obj.d.results;
+
+
+                }
+                else {
+
+                }
+            });
+    }
+</script>
+
+
+
+

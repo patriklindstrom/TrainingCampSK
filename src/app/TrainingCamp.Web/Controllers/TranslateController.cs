@@ -11,38 +11,31 @@ namespace TrainingCamp.Web.Controllers
 {
     public class TranslateController : Controller
     {
-
         public IWebTextRepo WebTextRepo = new Repository.WebTextRepoRavenDB();
+        public TranslatorRepo TranslateRepo = new TranslatorRepo();
         //
         // GET: /Translate/
-
         public TranslateController()
         {
         }
-
         public ActionResult Index(string controllername, string actionname, string langname,string fromlang="en")
         {
             if (controllername == null) throw new ArgumentNullException("controllername");
             ViewBag.Message = "Translate Shorjini Kempo Camp Stockholm 2014 for language " + langname;
             WebTextTranslationListViewModel webTextTranslationListviewModel = null;
-
             List<WebTextCombinedLight> webTextCombinedLight = this.WebTextRepo.SearchWebTextLeftJoin(viewName: controllername, rightLang: fromlang, leftLang: langname);
-
-
             if (webTextCombinedLight != null)
             {
-                webTextTranslationListviewModel = new WebTextTranslationListViewModel(webTextCombinedLight, langname,controllername);
+                webTextTranslationListviewModel = new WebTextTranslationListViewModel(webTextCombinedLight, langname,controllername)
+                {
+                    SourceLang = fromlang
+                };
             }
             else
             {
                 throw new NullReferenceException("Could not get webtext from WebTextRepo.SearchWebText for translation");
             }
-
-
-
-            return View(webTextTranslationListviewModel);
-
-            
+            return View(webTextTranslationListviewModel);          
         }
         
         public ActionResult Details(string SourceLangId, string TargetLangId)
@@ -105,8 +98,6 @@ namespace TrainingCamp.Web.Controllers
 
         public ActionResult Edit(string SourceLangId, string TargetLangId)
         {
-
-
             if (SourceLangId == null) throw new ArgumentNullException("SourceLangId");
             if (TargetLangId == null) throw new ArgumentNullException("TargetLangId");
             ViewBag.Message = "Translate Shorjini Kempo Camp Stockholm 2014 for language " + SourceLangId;
@@ -114,13 +105,15 @@ namespace TrainingCamp.Web.Controllers
 
             WebText webTextSource = this.WebTextRepo.GetWebTextRepo(SourceLangId);
             WebText webTextTarget = this.WebTextRepo.GetWebTextRepo(TargetLangId);
-
+            var translateRepo = new TranslatorRepo();
+            string webTranslateToken = translateRepo.GetBingToken();
             if (webTextSource != null && webTextTarget != null)
             {
                 webTextTranslationviewModel = new WebTextTranslationViewModel
                 {
                     SourceLang = webTextSource,
-                    TargetLang = webTextTarget
+                    TargetLang = webTextTarget,
+                    AccessToken = webTranslateToken
                 };
             }
             else
@@ -129,10 +122,8 @@ namespace TrainingCamp.Web.Controllers
             }
             return View(webTextTranslationviewModel);
         }
-
         //
         // POST: /Fundlist/Edit/5
-
         [HttpPost]
         public ActionResult Edit(string view, string name, string targetLang, string targetLangId, FormCollection values)
         {
@@ -170,9 +161,7 @@ namespace TrainingCamp.Web.Controllers
                 };
        
             return View(webTextTranslationviewModel);
-
         }
-
         [HttpPost]
         public ActionResult CreateTextItem(string view, string sourceLang, string targetLang, FormCollection values)
         {
@@ -185,9 +174,7 @@ namespace TrainingCamp.Web.Controllers
                 tLWebText.Name = values["SourceLang.Name"];
                 tLWebText.Lang = sourceLang;
                 tLWebText.Translator = values["SourceLang.Translator"];
-                tLWebText.Comment = values["SourceLang.Comment"];
-               
-               
+                tLWebText.Comment = values["SourceLang.Comment"];                         
                 tLWebText.View = view;
                 this.WebTextRepo.StoreWebText(tLWebText);
                 // http://localhost:52332/Home/index/sv/translate/en
@@ -201,6 +188,28 @@ namespace TrainingCamp.Web.Controllers
 
         }
 
+        public ActionResult TranslateAll(string sourceLang, string targetLang,string view)
+        {
+            try
+            {
+                var translatedWebTexts = TranslateWebTexts(sourceLang, targetLang);
+                this.WebTextRepo.StoreWebTexts(translatedWebTexts);
+                return RedirectToAction("Index", new { controllername = view, actionname = "index", langname = targetLang, fromLang = "en" });
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Index", new { controllername = view, actionname = "index", langname = targetLang, fromLang = "en" });
+                //Console.WriteLine(e);
+            }
+
+        }
+
+        public List<WebText> TranslateWebTexts(string sourceLang, string targetLang)
+        {
+            List<WebText> webTexts = this.WebTextRepo.ListWebTextForLang(language: sourceLang);
+            List<WebText> translatedWebTexts = this.TranslateRepo.TranslateAll(sourceLang: sourceLang, targetLang:targetLang,webTexts:webTexts);
+            return translatedWebTexts;
+        }
     }
 
 
