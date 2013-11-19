@@ -16,6 +16,7 @@ namespace TrainingCamp.Web.Controllers
       // [OutputCache(Duration = 600, VaryByParam = "lang")]
         public ActionResult Index(string lang="en")
         {
+
             WebTextViewBag webTextViewBag = null;
             List<WebText> webTexts = this.WebTextRepo.SearchWebText("Home", lang);
             MissingWebTextHandler missingWebTextHandler = new Repository.MissingWebTextFixer("Home", WebTextRepo);
