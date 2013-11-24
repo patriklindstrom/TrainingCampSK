@@ -45,7 +45,7 @@ namespace TrainingCamp.Tests.Controllers
 
             //Assert
         }
-        [TestMethod]
+       // [TestMethod]
         public void Translate_All_For_Japanese()
         {
             //Arrange
@@ -63,7 +63,7 @@ namespace TrainingCamp.Tests.Controllers
           Assert.AreEqual(translatedWebText[0].HtmlText,"Senaste nytt");  
         }
 
-        [TestMethod]
+     //   [TestMethod]
         public void Get_ReqBody_XmlDoc()
         {
             //Arrange
