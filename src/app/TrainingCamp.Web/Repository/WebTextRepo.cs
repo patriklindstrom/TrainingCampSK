@@ -183,7 +183,7 @@ namespace TrainingCamp.Web.Repository
 
         public void AddTestData(IDocumentSession session)
         {
-            const string VIEW_NAME = "Home";
+            const string VIEW_NAME = "home";
             const string TRANSLATOR = "MockFake";
             // List<WebText> webTexts = new List<WebText>();
             session.Store(new WebText()

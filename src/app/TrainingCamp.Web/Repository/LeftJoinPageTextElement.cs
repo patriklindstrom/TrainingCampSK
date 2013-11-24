@@ -83,7 +83,7 @@ namespace TrainingCamp.Web.Repository
     public class LeftJoinPageTextElementEnJp : AbstractMultiMapIndexCreationTask<WebTextCombinedLight>
     {
         private const string FROM_LANG = "en";
-        private const string TO_LANGUAGE = "jp";
+        private const string TO_LANGUAGE = "ja";
 
         public LeftJoinPageTextElementEnJp()
         {

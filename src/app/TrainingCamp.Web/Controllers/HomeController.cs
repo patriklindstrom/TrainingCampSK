@@ -19,8 +19,8 @@ namespace TrainingCamp.Web.Controllers
         {
 
             WebTextViewBag webTextViewBag = null;
-            List<WebText> webTexts = this.WebTextRepo.SearchWebText("Home", lang);
-            MissingWebTextHandler missingWebTextHandler = new Repository.MissingWebTextFixer("Home", WebTextRepo);
+            List<WebText> webTexts = this.WebTextRepo.SearchWebText("home", lang);
+            MissingWebTextHandler missingWebTextHandler = new Repository.MissingWebTextFixer("home", WebTextRepo);
            
             if (webTexts!=null)
             {
@@ -46,8 +46,8 @@ namespace TrainingCamp.Web.Controllers
 
         public ActionResult ClearCache()
         {
-            //    defaults: new { controller = "Home", action = "Index", lang = UrlParameter.Optional }
-            var path = Url.Action("Index", "Home",new{controller="Home",action = "Index" ,lang="en"});
+            //    defaults: new { controller = "home", action = "Index", lang = UrlParameter.Optional }
+            var path = Url.Action("Index", "home",new{controller="home",action = "Index" ,lang="en"});
             var defaultProvider = "";
             HttpResponse.RemoveOutputCacheItem(path);
             return RedirectToAction("Index");

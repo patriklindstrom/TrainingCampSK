@@ -84,7 +84,7 @@ namespace TrainingCamp.Web.Controllers
                 tLWebText.Name = name;
                 tLWebText.View = view;
                 this.WebTextRepo.StoreWebText(tLWebText);
-                // http://localhost:52332/Home/index/sv/translate/en
+                // http://localhost:52332/home/index/sv/translate/en
                 // url: "{controllername}/{actionname}/{langname}/translate/{fromlang}",
                 return RedirectToAction("Index", new { controllername = view, actionname="index",langname=targetLang,fromLang="en" });
             }
@@ -177,7 +177,7 @@ namespace TrainingCamp.Web.Controllers
                 tLWebText.Comment = values["SourceLang.Comment"];                         
                 tLWebText.View = view;
                 this.WebTextRepo.StoreWebText(tLWebText);
-                // http://localhost:52332/Home/index/sv/translate/en
+                // http://localhost:52332/home/index/sv/translate/en
                 // url: "{controllername}/{actionname}/{langname}/translate/{fromlang}",
                 return RedirectToAction("Index", new { controllername = view, actionname = "index", langname = targetLang, fromLang = "en" });
             }

@@ -43,7 +43,7 @@ namespace TrainingCamp.Web
             /* 
              {
    "WebText": {
-       "View": "Home",
+       "View": "home",
        "Lang": "ja",
        "Name": "Welcome",
        "HtmlText": "Översatt Text 赤春の花の木",
@@ -52,10 +52,10 @@ namespace TrainingCamp.Web
    "targetLang": "sv"
              * {
     "Id": "0",
-    "View": "Home",
+    "View": "home",
     "Name": "Welcome",
     "Lang": "ja",
-    "HtmlText": "Översatt Text ja赤春の花の木Home",
+    "HtmlText": "Översatt Text ja赤春の花の木home",
     "Comment": null,
     "CreationTime": "2013-10-08T21:44:32.4214516Z",
     "Translator": "Bing"
