@@ -1,0 +1,85 @@
+﻿@model TrainingCamp.Web.Models.CampMember
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>CampMember</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CampMemberId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CampMemberId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ClubNr)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ClubNr)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ClubName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ClubName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Paid)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Paid)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PaidAmount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PaidAmount)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PaidCurrency)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PaidCurrency)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PaidDateTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PaidDateTime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Comment)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Comment)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
